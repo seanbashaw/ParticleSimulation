@@ -9,6 +9,7 @@ import hack.brickhack3.particle.Particle;
 public class Main {
     public static void main(String[] args){
         Box box = new Box();
+        box.start();
         Particle particle = new Particle();
     }
 }
