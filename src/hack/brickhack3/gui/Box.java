@@ -561,7 +561,7 @@ public class Box {
             GL11.glColor3f(1f, 1f, 1f);
             float volumepos = (inputpanel - barlength) / 2 + width + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
             float volumeheight = mult + mult * 0;
-           // type(""+volumemin, volumeheight-10,volumepos);
+            type(""+volumemin, (int)volumeheight-10,(int)volumepos);
             GL11.glBegin(GL11.GL_QUADS);
             GL11.glVertex2f(volumepos - 5, volumeheight - 10);
             GL11.glVertex2f(volumepos + 5, volumeheight - 10);
