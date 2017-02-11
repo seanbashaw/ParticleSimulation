@@ -6,7 +6,7 @@ import hack.brickhack3.gui.Box;
  * Created by Connor on 2/11/2017.
  * Class for the particles flying around and stuff
  */
-public class Particle {
+public class Particle implements Runnable {
 
     private double x;
     private double y;
@@ -14,6 +14,9 @@ public class Particle {
     private double velY = 0;
 
     private final int radius;
+
+    private double deltaT;
+    private boolean complete;
 
     public Particle(double x, double y, int radius) {
         this.x = x;
@@ -112,9 +115,9 @@ public class Particle {
      * Updates the particle's xy based on it's velocity
      * TODO: skip frames if very slow
      */
-    public void updatePosisiton(double deltaT){
-        x += velX * deltaT;
-        y += velY * deltaT;
+    public void updatePosisiton(){
+        x += velX * this.deltaT;
+        y += velY * this.deltaT;
     }
 
     /**
@@ -143,5 +146,30 @@ public class Particle {
             velY = -velY;
             y = Box.getHeight() - radius;
         }
+    }
+
+    public boolean isComplete() {
+        return this.complete;
+    }
+
+    public double getDeltaT() {
+        return deltaT;
+    }
+
+    public void setDeltaT(double deltaT) {
+        this.deltaT = deltaT;
+    }
+
+    @Override
+    public void run() {
+        this.complete = false;
+        this.updatePosisiton();
+        this.wallCollisions();
+        // check for other collisions
+
+        this.complete = true;
+
+
+
     }
 }
