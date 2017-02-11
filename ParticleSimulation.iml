@@ -7,6 +7,23 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" exported="" name="lwjgl" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Dependencies">
+        <CLASSES />
+        <JAVADOC />
+        <NATIVE>
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+          <root url="file://$MODULE_DIR$/lib/windows" />
+        </NATIVE>
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
