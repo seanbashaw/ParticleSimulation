@@ -81,9 +81,8 @@ public class Main {
     }
 
     public static void main(String[] args){
-        Box box = new Box();
+        Box box = new Box(createParticles(100));
 
-        box.particles = createParticles(100);
         distributeParticles(box.particles);
 
         box.start();

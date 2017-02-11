@@ -15,8 +15,11 @@ import java.util.List;
  * Created by Connor on 2/11/2017.
  */
 public class Box {
+    public Box(Particle[] p){
+        this.particles = p;
+    }
     TrueTypeFont font;
-    public Particle[] particles = new Particle[0];
+    public Particle[] particles;
 
    // public void addParticle(Particle p) {
    //     this.particles.add(p);
@@ -616,7 +619,7 @@ public class Box {
 
     public void update() {
         for (int i = 0; i < particles.length; i++){
-            particles[i].updatePosisiton();
+            particles[i].updatePosition();
         }
     }
 }
