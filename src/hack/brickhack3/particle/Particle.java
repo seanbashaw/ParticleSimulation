@@ -1,16 +1,22 @@
 package hack.brickhack3.particle;
 
+import hack.brickhack3.gui.Box;
+
 /**
  * Created by Connor on 2/11/2017.
+ * Class for the particles flying around and stuff
  */
-public class Particle {
+public class Particle implements Runnable {
 
     private double x;
     private double y;
-    private double velocityCompX = 0;
-    private double velocityCompY = 0;
+    private double velX = 0;
+    private double velY = 0;
 
     private final int radius;
+
+    private double deltaT;
+    private boolean complete;
 
     public Particle(double x, double y, int radius) {
         this.x = x;
@@ -66,45 +72,104 @@ public class Particle {
      *
      * @return
      */
-    public double getVelocityCompX() {
-        return velocityCompX;
+    public double getVelX() {
+        return velX;
     }
 
     /**
      *
-     * @param velocityCompX
+     * @param velX
      */
-    public void setVelocityCompX(double velocityCompX) {
-        this.velocityCompX = velocityCompX;
+    public void setVelX(double velX) {
+        this.velX = velX;
     }
 
     /**
      *
      * @return
      */
-    public double getVelocityCompY() {
-        return velocityCompY;
+    public double getVelY() {
+        return velY;
     }
 
     /**
      *
-     * @param velocityCompY
+     * @param velY
      */
-    public void setVelocityCompY(double velocityCompY) {
-        this.velocityCompY = velocityCompY;
+    public void setVelY(double velY) {
+        this.velY = velY;
     }
 
     /**
      * Sets the velocity of this particle
-     *
+     * TODO: divide magnitude by some factor
      * @param magnitude a magnitude
      * @param direction a direction (in degrees)
      */
     public void setVelocity(double magnitude, double direction) {
-        this.velocityCompX = magnitude * Math.cos(Math.toRadians(direction));
-        this.velocityCompY = magnitude * Math.sin(Math.toRadians(direction));
+        this.velX = magnitude * Math.cos(Math.toRadians(direction));
+        this.velY = magnitude * Math.sin(Math.toRadians(direction));
     }
 
+    /**
+     * Updates the particle's xy based on it's velocity
+     * TODO: skip frames if very slow
+     */
+    public void updatePosisiton(){
+        x += velX * this.deltaT;
+        y += velY * this.deltaT;
+    }
 
-    
+    /**
+     * Checks for collisions with the wall
+     * Run in updatePosition
+     * TODO: possible merge with checkCollisions
+     */
+    public void wallCollisions(){
+        //Left wall
+        if((x - radius) <= 0){
+            velX = -velX;
+            x = radius;
+        }
+        //Right wall
+        else if((x + radius) >= Box.getWidth()){
+            velX = -velX;
+            x = Box.getWidth() - radius;
+        }
+        //Upper wall
+        else if((y - radius) <= 0){
+            velY = -velY;
+            y = radius;
+        }
+        //Bottom wall
+        else if((y + radius) >= Box.getHeight()){
+            velY = -velY;
+            y = Box.getHeight() - radius;
+        }
+    }
+
+    public boolean isComplete() {
+        return this.complete;
+    }
+
+    public double getDeltaT() {
+        return deltaT;
+    }
+
+    public void setDeltaT(double deltaT) {
+        this.deltaT = deltaT;
+    }
+
+    @Override
+    public void run() {
+        this.complete = false;
+        this.updatePosisiton();
+        this.wallCollisions();
+        // check for other collisions
+
+        this.complete = true;
+
+
+
+    }
 }
