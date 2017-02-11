@@ -7,8 +7,8 @@ public class Particle {
 
     private double x;
     private double y;
-    private double velocityCompX;
-    private double velocityCompY;
+    private double velocityCompX = 0;
+    private double velocityCompY = 0;
 
     private final int radius;
 
