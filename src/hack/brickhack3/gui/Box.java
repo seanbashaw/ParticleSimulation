@@ -15,24 +15,24 @@ import java.util.List;
  */
 public class Box {
 
-    List<Particle> particles = new ArrayList<>();
+    private List<Particle> particles = new ArrayList<>();
 
     public void addParticle(Particle p) {
         this.particles.add(p);
     }
 
-    public static int width = 800;
-    public static int height = 800;
-    public static int inputpanel = 400;
-    public static int barlength = 300;
-    public float volumemin = 0;
-    public float volumemax = 4;
-    public float volume = (volumemax+volumemin)/2;
-    public float kelvinmin = 0;
-    public float kelvinmax = 1000;
-    public float guinum = 0;
+    private static int width = 800;
+    private static int height = 800;
+    private static int inputpanel = 400;
+    private static int barlength = 300;
+    private float volumemin = 0;
+    private float volumemax = 4;
+    private float volume = (volumemax+volumemin)/2;
+    private float kelvinmin = 0;
+    private float kelvinmax = 1000;
+    private float guinum = -1;
     public float kelvin = (kelvinmax+kelvinmin)/2;
-    double DEG2RAD = 3.14159/180;
+    private double DEG2RAD = 3.14159/180;
     public void start(){
         try{
             Display.setDisplayMode(new DisplayMode(width+inputpanel,height));
@@ -44,7 +44,7 @@ public class Box {
         }
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0,width+inputpanel,0,height,1,-1);
+        GL11.glOrtho(0,width+inputpanel,height,0,1,-1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         while (!Display.isCloseRequested()){
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
@@ -87,8 +87,10 @@ public class Box {
             if (Mouse.isButtonDown(0)){
                 int x = Mouse.getX();
                 int y = Mouse.getY();
-
                 if (x >= width && x < width+inputpanel && y > 0 && y < height){
+                    if (guinum==-1){
+                        guinum = 0;
+                    }
                     if (x > (volumepos-5) && x < (volumepos+5) && y < (volumeheight-10) && y > (volumeheight+10)){
 
                     }
@@ -100,6 +102,5 @@ public class Box {
         Display.destroy();
     }
     public void update(){
-
     }
 }
