@@ -115,7 +115,7 @@ public class Particle implements Runnable {
      * Updates the particle's xy based on it's velocity
      * TODO: skip frames if very slow
      */
-    public void updatePosisiton(){
+    public void updatePosition(){
         x += velX * this.deltaT;
         y += velY * this.deltaT;
     }
@@ -163,7 +163,7 @@ public class Particle implements Runnable {
     @Override
     public void run() {
         this.complete = false;
-        this.updatePosisiton();
+        this.updatePosition();
         this.wallCollisions();
         // check for other collisions
 
