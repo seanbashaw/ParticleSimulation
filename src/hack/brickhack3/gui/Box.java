@@ -16,7 +16,7 @@ public class Box {
             e.printStackTrace();
             System.exit(0);
         }
-        while (Display.isCloseRequested()){
+        while (!Display.isCloseRequested()){
             Display.update();
         }
         Display.destroy();
