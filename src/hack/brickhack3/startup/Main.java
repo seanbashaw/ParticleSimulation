@@ -13,6 +13,5 @@ public class Main {
         Particle particle = new Particle(400, 400, 10);
         box.addParticle(particle);
         box.start();
-
     }
 }
