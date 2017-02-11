@@ -21,6 +21,14 @@ public class Box {
         this.particles.add(p);
     }
 
+    public static int getWidth() {
+        return width;
+    }
+
+    public static int getHeight() {
+        return height;
+    }
+
     private static int width = 800;
     private static int height = 800;
     private static int inputpanel = 400;
@@ -32,7 +40,7 @@ public class Box {
     private float kelvinmax = 1000;
     private float guinum = -1;
     public float kelvin = (kelvinmax+kelvinmin)/2;
-    private double DEG2RAD = 3.14159/180;
+    private double DEG2RAD = Math.PI/180;
     public void start(){
         try{
             Display.setDisplayMode(new DisplayMode(width+inputpanel,height));
@@ -88,13 +96,17 @@ public class Box {
                 int x = Mouse.getX();
                 int y = Mouse.getY();
                 if (x >= width && x < width+inputpanel && y > 0 && y < height){
-                    if (guinum==-1){
-                        guinum = 0;
-                    }
                     if (x > (volumepos-5) && x < (volumepos+5) && y < (volumeheight-10) && y > (volumeheight+10)){
-
+                        if (guinum==-1){
+                            guinum = 0;
+                        }
                     }
                 }
+                if (guinum == 0){
+                    volume = Math.max(Math.min(volume,volumemax),volumemin);
+                }
+            }else{
+                guinum = -1;
             }
             update();
             Display.update();
