@@ -12,7 +12,7 @@ public class Main {
     /**
      *  Constants needed for speed and such
      */
-    public double T, M, R;
+    private static double T = 293, M = 1, R = 8.3145;
 
 
     /**
@@ -20,7 +20,7 @@ public class Main {
      * @param v the given speed
      * @return the fraction of particles that will have that speed.
      */
-    private double func(double v){
+    private static double func(double v){
         return 4 * Math.PI * Math.pow( (3/2) , (M/2 * Math.PI * R * T)) * Math.pow( v , 2 )
                 * Math.exp((-M * Math.pow( v , 2 ) / (2 * R * T)));
     }
@@ -31,7 +31,7 @@ public class Main {
      * @param N the number of particles to generate
      * @return the array full of particles
      */
-    public Particle[] createParticles(int N){
+    private static Particle[] createParticles(int N){
         Particle[] arr = new Particle[N];
         int i = 0;
 
@@ -43,7 +43,7 @@ public class Main {
             while(j > 0 && i < N){
 
                 //create a particle with speed v
-                arr[i] = new Particle(0, 0, 10);    //TODO: randomize xy or something
+                arr[i] = new Particle(0, 0, 4);
                 double dir = Math.random() * 2 * Math.PI;
                 arr[i].setVelocity(v, dir);
 
@@ -57,10 +57,40 @@ public class Main {
         return arr;
     }
 
+    private static void distributeParticles(Particle[] arr){
+        int N = arr.length;
+        //Particle[] placed = new Particle[N];
+
+        int i = 0;
+        while(i < N){
+            Particle p = arr[i];
+
+            //randomize position
+            //while(true){
+                p.setX((Math.random() * (Box.getWidth() - (2 * p.getRadius()))) + p.getRadius());
+                p.setY((Math.random() * (Box.getHeight() - (2 * p.getRadius()))) + p.getRadius());
+
+                //TODO: check if it overlaps
+
+            //    break;
+            //}
+
+            i += 1;
+        }
+
+    }
+
     public static void main(String[] args){
         Box box = new Box();
 
-        Particle particle = new Particle(400, 400, 10);
+        box.particles = createParticles(100);
+        distributeParticles(box.particles);
+
         box.start();
+
+        //move to thread?
+
+
+
     }
 }
