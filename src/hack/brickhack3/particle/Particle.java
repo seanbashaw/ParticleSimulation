@@ -10,16 +10,28 @@ public class Particle {
     private double velocityCompX;
     private double velocityCompY;
 
-    public Particle(double x, double y) {
+    private final int radius;
+
+    public Particle(double x, double y, int radius) {
         this.x = x;
         this.y = y;
+        this.radius = radius;
 
+    }
+
+    /**
+     * Get the radius of this particle
+     *
+     * @return the radius of this particle
+     */
+    public int getRadius() {
+        return this.radius;
     }
 
     /**
      * Get the x-position of this particle
      *
-     * @return
+     * @return the x-position of this particle
      */
     public double getX() {
         return x;
@@ -28,7 +40,7 @@ public class Particle {
     /**
      * Set a new x-position of this particle
      *
-     * @param x
+     * @param x a new x-position of this particle
      */
     public void setX(double x) {
         this.x = x;
@@ -75,7 +87,7 @@ public class Particle {
     }
 
     /**
-     * 
+     *
      * @param velocityCompY
      */
     public void setVelocityCompY(double velocityCompY) {
