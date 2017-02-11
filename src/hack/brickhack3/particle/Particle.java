@@ -129,19 +129,19 @@ public class Particle {
             x = radius;
         }
         //Right wall
-        else if((x + radius) >= Box.width){
+        else if((x + radius) >= Box.getWidth()){
             velX = -velX;
-            x = Box.width - radius;
+            x = Box.getWidth() - radius;
         }
         //Upper wall
         else if((y - radius) <= 0){
             velY = -velY;
-            x = radius;
+            y = radius;
         }
         //Bottom wall
-        else if((y + radius) >= Box.height){
+        else if((y + radius) >= Box.getHeight()){
             velY = -velY;
-            x = Box.height - radius;
+            y = Box.getHeight() - radius;
         }
     }
 }
