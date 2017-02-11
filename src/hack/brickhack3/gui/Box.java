@@ -6,6 +6,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import sun.font.TrueTypeFont;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
  * Created by Connor on 2/11/2017.
  */
 public class Box {
-
-    public Particle[] particles;
+    TrueTypeFont font;
+    public Particle[] particles = new Particle[0];
 
    // public void addParticle(Particle p) {
    //     this.particles.add(p);
@@ -527,7 +528,7 @@ public class Box {
         }
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0, width + inputpanel, 0, height, 1, -1);
+        GL11.glOrtho(0, width + inputpanel, height, 0, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
@@ -539,7 +540,8 @@ public class Box {
             GL11.glVertex2f(width + inputpanel, 0);
             GL11.glEnd();
             GL11.glColor3f(.9f, .2f, .1f);
-            for (Particle p : particles) {
+            for (int a = 0; a < particles.length; a++) {
+                Particle p = particles[a];
                 GL11.glBegin(GL11.GL_TRIANGLE_FAN);
                 for (int i = 0; i < 360; i++) {
                     double deg = i * DEG2RAD;
@@ -558,10 +560,12 @@ public class Box {
                 GL11.glVertex2f(barstart + barlength, mult + mult * i - 5);
                 GL11.glEnd();
             }
-            GL11.glColor3f(1f, 1f, 1f);
+
             float volumepos = (inputpanel - barlength) / 2 + width + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
             float volumeheight = mult + mult * 0;
-            type(""+volumemin, (int)volumeheight-10,(int)volumepos);
+            type(""+volumemin, (int)(barstart)-5,(int)volumeheight-10);
+            type(""+volumemax, (int)(barstart)-5,(int)volumeheight-10);
+            GL11.glColor3f(1f, 1f, 1f);
             GL11.glBegin(GL11.GL_QUADS);
             GL11.glVertex2f(volumepos - 5, volumeheight - 10);
             GL11.glVertex2f(volumepos + 5, volumeheight - 10);
@@ -577,10 +581,12 @@ public class Box {
             GL11.glVertex2f(kelvinpos - 5, kelvinheight + 10);
             GL11.glEnd();
             if (Mouse.isButtonDown(0)) {
-                int x = Mouse.getX();
-                int y = Mouse.getY();
+
+                int x = (width+inputpanel)-Mouse.getX();
+                int y = (height-Mouse.getY());
                 if (x >= width && x < width + inputpanel && y > 0 && y < height) {
                     if (x > (volumepos - 5) && x < (volumepos + 5) && y > (volumeheight - 10) && y < (volumeheight + 10)) {
+                        System.out.println("SEXY");
                         if (guinum == -1) {
                             guinum = 0;
                         }
@@ -609,5 +615,8 @@ public class Box {
     }
 
     public void update() {
+        for (int i = 0; i < particles.length; i++){
+            particles[i].updatePosisiton();
+        }
     }
 }
