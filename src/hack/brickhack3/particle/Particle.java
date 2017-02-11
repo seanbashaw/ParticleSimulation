@@ -17,6 +17,72 @@ public class Particle {
     }
 
     /**
+     * Get the x-position of this particle
+     *
+     * @return
+     */
+    public double getX() {
+        return x;
+    }
+
+    /**
+     * Set a new x-position of this particle
+     *
+     * @param x
+     */
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getY() {
+        return y;
+    }
+
+    /**
+     *
+     * @param y
+     */
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getVelocityCompX() {
+        return velocityCompX;
+    }
+
+    /**
+     *
+     * @param velocityCompX
+     */
+    public void setVelocityCompX(double velocityCompX) {
+        this.velocityCompX = velocityCompX;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getVelocityCompY() {
+        return velocityCompY;
+    }
+
+    /**
+     * 
+     * @param velocityCompY
+     */
+    public void setVelocityCompY(double velocityCompY) {
+        this.velocityCompY = velocityCompY;
+    }
+
+    /**
      * Sets the velocity of this particle
      *
      * @param magnitude a magnitude
@@ -26,6 +92,7 @@ public class Particle {
         this.velocityCompX = magnitude * Math.cos(Math.toRadians(direction));
         this.velocityCompY = magnitude * Math.sin(Math.toRadians(direction));
     }
-    
+
+
     
 }
