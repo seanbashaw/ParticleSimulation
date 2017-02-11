@@ -2,6 +2,7 @@ package hack.brickhack3.gui;
 
 import hack.brickhack3.particle.Particle;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -29,8 +30,9 @@ public class Box {
     public float volume = (volumemax+volumemin)/2;
     public float kelvinmin = 0;
     public float kelvinmax = 1000;
+    public float guinum = 0;
     public float kelvin = (kelvinmax+kelvinmin)/2;
-
+    double DEG2RAD = 3.14159/180;
     public void start(){
         try{
             Display.setDisplayMode(new DisplayMode(width+inputpanel,height));
@@ -53,6 +55,15 @@ public class Box {
             GL11.glVertex2f(width+inputpanel,height);
             GL11.glVertex2f(width+inputpanel,0);
             GL11.glEnd();
+            GL11.glColor3f(.9f,.2f,.1f);
+            for (Particle p : particles){
+                GL11.glBegin(GL11.GL_TRIANGLE_FAN);
+                for (int i = 0; i < 360; i++){
+                    double deg = i*DEG2RAD;
+                    GL11.glVertex2d(p.getX()+Math.cos(deg)*p.getRadius(),p.getY()+Math.sin(deg)*p.getRadius());
+                }
+                GL11.glEnd();
+            }
             float barstart = width+(inputpanel-barlength)/2;
             float mult = height/5;
             GL11.glColor3f(.9f,.9f,.9f);
@@ -64,13 +75,25 @@ public class Box {
                 GL11.glVertex2f(barstart+barlength, mult+mult*i-5);
                 GL11.glEnd();
             }
-            float volumepos=(volumemax-volume);
+            GL11.glColor3f(1f,1f,1f);
+            float volumepos=(inputpanel-barlength)/2+width+(barlength*((volume-volumemin)/(volumemax-volumemin)));
+            float volumeheight = mult+mult*0;
             GL11.glBegin(GL11.GL_QUADS);
-            GL11.glVertex2f(barstart, mult+mult-5);
-            GL11.glVertex2f(barstart, mult+mult+5);
-            GL11.glVertex2f(barstart+barlength, mult+mult+5);
-            GL11.glVertex2f(barstart+barlength, mult+mult-5);
+            GL11.glVertex2f(volumepos-5, volumeheight-10);
+            GL11.glVertex2f(volumepos+5, volumeheight-10);
+            GL11.glVertex2f(volumepos+5, volumeheight+10);
+            GL11.glVertex2f(volumepos-5, volumeheight+10);
             GL11.glEnd();
+            if (Mouse.isButtonDown(0)){
+                int x = Mouse.getX();
+                int y = Mouse.getY();
+
+                if (x >= width && x < width+inputpanel && y > 0 && y < height){
+                    if (x > (volumepos-5) && x < (volumepos+5) && y < (volumeheight-10) && y > (volumeheight+10)){
+
+                    }
+                }
+            }
             update();
             Display.update();
         }
