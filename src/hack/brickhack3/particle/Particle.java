@@ -112,9 +112,9 @@ public class Particle {
      * Updates the particle's xy based on it's velocity
      * TODO: skip frames if very slow
      */
-    public void updatePosisiton(){
-        x += velX;
-        y += velY;
+    public void updatePosisiton(double deltaT){
+        x += velX * deltaT;
+        y += velY * deltaT;
     }
 
     /**
