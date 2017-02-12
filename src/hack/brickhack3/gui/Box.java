@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 /**
  * Created by seanb on 2/11/2017.
+ *
  */
 public class Box {
-    public Particle[] particles;
-    private static int width=1080;
-    private static int height=1080;
+
+    private Particle[] particles;
+    private static int width = 1080;
+    private static int height = 1080;
     private double DEG2RAD = Math.PI / 180;
-    private QuadTree quad;
 
     public Box(Particle[] particles){
         this.particles = particles;
@@ -22,8 +23,6 @@ public class Box {
     public Box(int num_particles) {
         this.particles = this.createParticles(num_particles);
         this.distributeParticles(this.particles);
-        this.quad = new QuadTree(0,new Rectangle(0,0,1080,1080));
-
     }
 
     public static int getWidth() {
@@ -48,18 +47,31 @@ public class Box {
     }
 
     public void update() {
-        /*
-        for(Particle p : this.particles){
-            p.setDeltaT(1.00/Gui.getFps());
-            p.update();
-        }
-         */
-        this.quad.clear();
+        /*for(Particle p : particles){
+            p.setDeltaT(.50/Gui.getFps());
+            p.updatePosition();
+            p.wallCollisions();
+
+            int i = 0;
+            while(i < particles.length){
+                int j = i + 1;
+                while(j < particles.length){
+                    //particles[i].particleCollide(particles[j]);
+                    particles[i].particleCollide(particles[j]);
+                    j += 1;
+                }
+                i += 1;
+            }
+        }*/
+
         if (this.particles.length > 50) {
             for (int i = 0; i < this.particles.length; i += 50) {
                 final int i_temp = i;
                 new Thread(() -> {
                     for (int k = 0; k < 51; k += 1) {
+
+                        // this section is called on every particle
+
                         try {
                             this.particles[k + i_temp].setDeltaT(1.00/Gui.getFps());
                             this.particles[k + i_temp].update();
@@ -71,31 +83,17 @@ public class Box {
             }
         } else {
             for (Particle p : this.particles) {
-                p.setDeltaT(1.00/Gui.getFps());
                 p.update();
-
             }
         }
 
-        for(int i = 0; i < this.particles.length; i++){
-            quad.insert(particles[i]);
-        }
-        ArrayList<Particle> returnObjects = new ArrayList<Particle>();
-        for (int l = 0; l < this.particles.length; l++){
-            returnObjects.clear();
-            this.quad.retrieve(returnObjects,this.particles[l]);
-            System.out.println(returnObjects.size());
-            for (int x = 0; x < returnObjects.size(); x++){
-                this.particles[l].particleCollide(returnObjects.get(x));
-            }
-        }
+        // this section is called once
     }
 
     /**
      *  Constants needed for speed and such
      */
     private double T = 2093, M = 1, R = 8.3145;
-
 
     /**
      * This function describes the distributions of the speed
@@ -106,7 +104,6 @@ public class Box {
         return 4 * Math.PI * Math.pow((M/2 * Math.PI * R * T) , (3/2)) * Math.pow( v , 2 )
                 * Math.exp((-M * Math.pow( v , 2 ) / (2 * R * T)));
     }
-
 
     /**
      * Create an array of particles with weighted speeds and random directions and positions
@@ -125,7 +122,7 @@ public class Box {
             while(j > 0 && i < N){
 
                 //create a particle with speed v
-                arr[i] = new Particle(0, 0, 4);
+                arr[i] = new Particle(0, 0, 10);
                 double dir = Math.random() * 2 * Math.PI;
                 arr[i].setVelocity(v, dir);
 
