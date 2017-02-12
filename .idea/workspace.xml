@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="">
+    <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="Added collisions 2.0">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,9 +31,10 @@
             <file leaf-file-name="Particle.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="704">
-                    <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+                  <state relative-caret-position="650">
+                    <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
                     <folding>
+                      <element signature="imports" expanded="true" />
                       <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
                       <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
                       <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -47,6 +49,8 @@
                       <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
                       <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
                       <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+                      <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+                      <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -56,7 +60,7 @@
               <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="204">
-                    <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+                    <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -78,8 +82,8 @@
       <file leaf-file-name="Box.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+            <state relative-caret-position="323">
+              <caret line="60" column="27" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#draw#0;class#Box#0" expanded="false" />
@@ -477,6 +481,27 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
@@ -545,6 +570,34 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -744,7 +797,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486873284632</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added collisions 2.0">
+      <created>1486874691921</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1486874691921</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -761,7 +821,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18512781" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20371805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32145622" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -816,7 +876,8 @@
     <MESSAGE value="I committed!" />
     <MESSAGE value="Got rid of print" />
     <MESSAGE value="Added collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added collisions" />
+    <MESSAGE value="Added collisions 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added collisions 2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -876,6 +937,7 @@
         <state relative-caret-position="952">
           <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -890,6 +952,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -920,6 +984,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -934,6 +999,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -943,6 +1010,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -957,6 +1025,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1005,6 +1075,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1019,6 +1090,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1067,6 +1140,7 @@
         <state relative-caret-position="51">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1081,6 +1155,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1121,6 +1197,7 @@
         <state relative-caret-position="99">
           <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="34" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1135,6 +1212,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1167,6 +1246,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1181,6 +1261,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1213,6 +1295,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1227,6 +1310,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1259,6 +1344,7 @@
         <state relative-caret-position="165">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1273,6 +1359,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1305,6 +1393,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1319,6 +1408,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1341,6 +1432,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1355,6 +1447,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1450,18 +1544,34 @@
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="60" column="27" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#draw#0;class#Box#0" expanded="false" />
+            <element signature="docComment;field#T#0;class#Box#0" expanded="false" />
+            <element signature="docComment;method#func#0;class#Box#0" expanded="false" />
+            <element signature="method#func#0;class#Box#0" expanded="false" />
+            <element signature="docComment;method#createParticles#0;class#Box#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+        <state relative-caret-position="650">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#getX#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#setX#0;class#Particle#0" expanded="false" />
@@ -1476,21 +1586,8 @@
             <element signature="method#updatePosition#0;class#Particle#0" expanded="false" />
             <element signature="docComment;method#wallCollisions#0;class#Particle#0" expanded="false" />
             <element signature="method#wallCollisions#0;class#Particle#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#draw#0;class#Box#0" expanded="false" />
-            <element signature="docComment;field#T#0;class#Box#0" expanded="false" />
-            <element signature="docComment;method#func#0;class#Box#0" expanded="false" />
-            <element signature="method#func#0;class#Box#0" expanded="false" />
-            <element signature="docComment;method#createParticles#0;class#Box#0" expanded="false" />
+            <element signature="docComment;method#particleCollide#0;class#Particle#0" expanded="false" />
+            <element signature="method#particleCollide#0;class#Particle#0" expanded="false" />
           </folding>
         </state>
       </provider>

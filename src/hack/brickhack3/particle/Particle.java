@@ -1,6 +1,10 @@
 package hack.brickhack3.particle;
 
 import hack.brickhack3.gui.Gui;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.tests.SoundTest;
+
+import java.util.Vector;
 
 /**
  * Created by Connor on 2/11/2017.
@@ -107,7 +111,7 @@ public class Particle {
      * @param direction a direction (in degrees)
      */
     public void setVelocity(double magnitude, double direction) {
-        magnitude*=100;
+        magnitude *= 500;
         this.velX = magnitude * Math.cos(direction);
         this.velY = magnitude * Math.sin(direction);
     }
@@ -154,28 +158,39 @@ public class Particle {
      * @param that
      */
     public void particleCollide(Particle that){
-        //Check if actually colliding
-        if (Math.sqrt(Math.pow(this.x - that.x , 2) + Math.pow(this.y - that.y , 2)) > (2 * radius)) {
-            //System.out.println("No collision...");
-            return;
-        }
+        Vector2f pos1 = new Vector2f((float)this.x, (float)this.y);
+        Vector2f pos2 = new Vector2f((float)that.x, (float)that.y);
+        Vector2f delta = (pos2.add(pos1.negate()));
+        float d = delta.length();
+        if(d > 2 * radius) return;
+        Vector2f mtd = delta.scale(((2 * radius) - d) / d);
 
-        System.out.println("COLLISION DETECTED!");
+        pos1.add(mtd.scale(0.5f));
+        pos2.add(mtd.scale(-0.5f));
 
-        double theta1 = Math.atan(this.velX / this.velY);
-        double theta2 = Math.atan(that.velX / that.velY);
+        Vector2f vel1 = new Vector2f((float)this.velX, (float)this.velY);
+        Vector2f vel2 = new Vector2f((float)that.velX, (float)that.velY);
 
-        double v1 = Math.sqrt(Math.pow(this.velX,2) + Math.pow(this.velY, 2));
-        double v2 = Math.sqrt(Math.pow(that.velX,2) + Math.pow(that.velY, 2));
+        Vector2f n = mtd.scale(1/mtd.length());
 
-        double pi = Math.PI;
-        double phi = Math.atan((this.y - that.y) / (that.x - this.x));
+        Vector2f v = new Vector2f(0 , 0);
+        v.add(vel1);
+        v.add(vel2.negate());
 
-        this.velX = (v2 * Math.cos(theta2 - phi) * Math.cos(phi)) + (v1 * Math.sin(theta1 - pi) * Math.cos(phi + (pi/2)));
-        this.velY = (v2 * Math.cos(theta2 - phi) * Math.sin(phi)) + (v1 * Math.sin(theta1 - pi) * Math.sin(phi + (pi/2)));
+        float vn = v.dot(n);
+        if(vn > 0.0f) return;
 
-        that.velY = (v1 * Math.cos(theta1 - phi) * Math.sin(phi)) + (v2 * Math.sin(theta2 - pi) * Math.sin(phi + (pi/2)));
-        that.velX = (v1 * Math.cos(theta1 - phi) * Math.cos(phi)) + (v2 * Math.sin(theta2 - pi) * Math.cos(phi + (pi/2)));
+        float i = - vn / 1.0f;
+        Vector2f impulse = new Vector2f(n);
+        impulse.scale(i);
+
+        vel1.add(impulse);
+        vel2.add(impulse.negate());
+
+        this.velX = vel1.getX();
+        this.velY = vel1.getY();
+        that.velX = vel2.getX();
+        that.velY = vel2.getY();
 
         this.updatePosition();
         that.updatePosition();
