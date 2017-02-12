@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ParticleSim.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Launch.bat" afterPath="$PROJECT_DIR$/Launch.bat" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -978,7 +978,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486914511035</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Added a Launch.bat and README.md 2.0">
+      <created>1486914709857</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1486914709858</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1058,7 +1065,8 @@
     <MESSAGE value="Updated GUI" />
     <MESSAGE value="Final Release" />
     <MESSAGE value="Added a Launch.bat and README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a Launch.bat and README.md" />
+    <MESSAGE value="Added a Launch.bat and README.md 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a Launch.bat and README.md 2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
