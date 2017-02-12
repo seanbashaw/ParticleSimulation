@@ -48,7 +48,7 @@ public class Box {
 
     public void update() {
         for(Particle p : particles){
-            p.setDeltaT(1.0/Gui.getFps());
+            p.setDeltaT(.50/Gui.getFps());
             p.updatePosition();
             p.wallCollisions();
 
@@ -56,6 +56,7 @@ public class Box {
             while(i < particles.length){
                 int j = i + 1;
                 while(j < particles.length){
+                    //particles[i].particleCollide(particles[j]);
                     particles[i].particleCollide(particles[j]);
                     j += 1;
                 }
@@ -96,7 +97,7 @@ public class Box {
             while(j > 0 && i < N){
 
                 //create a particle with speed v
-                arr[i] = new Particle(0, 0, 20);
+                arr[i] = new Particle(0, 0, 10);
                 double dir = Math.random() * 2 * Math.PI;
                 arr[i].setVelocity(v, dir);
 
