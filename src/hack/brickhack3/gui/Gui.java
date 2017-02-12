@@ -7,9 +7,6 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import sun.font.TrueTypeFont;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Connor on 2/11/2017.
  */
@@ -505,18 +502,18 @@ public class Gui {
     }
 
     private static int fps = 60;
-    private static int inputpanel = 400;
-    private static int barlength = 300;
-    private float volumemin = 0;
-    private float volumemax = 4;
-    private float volume = (volumemax + volumemin) / 2;
-    private float kelvinmin = 0;
-    private float kelvinmax = 1000;
-    private float guinum = -1;
+    private static int interfaceWidth = 400;
+    private static int sliderLength = 300;
+    private float minimumVolume = 0;
+    private float maximumVolume = 4;
+    private float volume = (maximumVolume + minimumVolume) / 2;
+    private float minimumKelvin = 0;
+    private float maximumKelvin = 1000;
+    private float selectedSlider = -1;
     private float minimumtime = 0;
     private float maximumtime = 10;
-    private int g = 0;
-    private Element element=Element.values()[g];
+    private int selectedElement = 0;
+    private Element element=Element.values()[selectedElement];
     private enum Element{
         HYDROGEN,
         HELIUM,
@@ -525,7 +522,7 @@ public class Gui {
         NEON
     };
     private int elementLength = 5;
-    public float kelvin = (kelvinmax + kelvinmin) / 2;
+    public float kelvin = (maximumKelvin + minimumKelvin) / 2;
     public void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex2f(x-width/2, y+height/2);
@@ -536,7 +533,7 @@ public class Gui {
     }
     public void start() {
         try {
-            Display.setDisplayMode(new DisplayMode(Box.getWidth() + inputpanel, Box.getHeight()));
+            Display.setDisplayMode(new DisplayMode(Box.getWidth() + interfaceWidth, Box.getHeight()));
             Display.setFullscreen(true);
             Display.setTitle("Particle Simulator - BrickHacks 3");
             Display.create();
@@ -546,75 +543,75 @@ public class Gui {
         }
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0, Box.getWidth() + inputpanel, Box.getHeight(), 0, 1, -1);
+        GL11.glOrtho(0, Box.getWidth() + interfaceWidth, Box.getHeight(), 0, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         while (!Display.isCloseRequested()) {
+            float barStartPosition = Box.getWidth() + (interfaceWidth - sliderLength) / 2;
+            float verticalSpacing = Box.getHeight() / 5;
+            float volumeSliderPosition = (interfaceWidth - sliderLength) / 2 + Box.getWidth() + (sliderLength * ((volume - minimumVolume) / (maximumVolume - minimumVolume)));
+            float volumeVerticalPosition = verticalSpacing * 1;
+            float elementSliderPosition = (interfaceWidth - sliderLength) / 2 + Box.getWidth() + (sliderLength * selectedElement) / (elementLength-1);
+            float elementVerticalPosition = verticalSpacing * 3;
+            float kelvinSliderPosition = (interfaceWidth - sliderLength) / 2 + Box.getWidth() + (sliderLength * ((kelvin - minimumKelvin) / (maximumKelvin - minimumKelvin)));
+            float kelvinVerticalPosition = verticalSpacing * 2;
             Display.sync(fps);
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
             box.draw();
             GL11.glColor3f(.7f, .7f, .7f);
-            drawBox(Box.getWidth()+(inputpanel/2),Box.getHeight()/2,inputpanel,Box.getHeight());
-            float barstart = Box.getWidth() + (inputpanel - barlength) / 2;
-            float mult = Box.getHeight() / 5;
+            drawBox(Box.getWidth()+(interfaceWidth /2),Box.getHeight()/2, interfaceWidth,Box.getHeight());
             GL11.glColor3f(.9f, .9f, .9f);
             for (int i = 0; i < 3; i++) {
-                drawBox(barstart + (barlength / 2), mult + mult * i, barlength, 5);
+                drawBox(barStartPosition + (sliderLength / 2), verticalSpacing + verticalSpacing * i, sliderLength, 5);
             }
-            float volumepos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
-            float volumeheight = mult + mult * 0;
-            float elementpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * g) / (elementLength-1);
-            float elementheight = mult + mult * 2;
-            type(""+volumemin, (int)(barstart)-10,(int)volumeheight-20);
-            type(""+volumemax, (int)(barstart+barlength-10),(int)volumeheight-20);
-            type(Float.toString(volume).substring(0,3),(int)volumepos-10,(int)volumeheight-20);
-            type("Volume",(int)(barstart+barlength/2-25),(int)(volumeheight-40));
-            type(element.name(),(int)(barstart+barlength/2)-25,(int)(elementheight-40));
+            type(""+ minimumVolume, (int)(barStartPosition)-10,(int)volumeVerticalPosition-20);
+            type(""+ maximumVolume, (int)(barStartPosition+ sliderLength -10),(int)volumeVerticalPosition-20);
+            type(Float.toString(volume).substring(0,3),(int)volumeSliderPosition-10,(int)volumeVerticalPosition-20);
+            type("Volume",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
+            type(element.name(),(int)(barStartPosition+ sliderLength /2)-25,(int)(elementVerticalPosition-40));
             GL11.glColor3f(1f, 1f, 1f);
-            drawBox(volumepos,volumeheight,10,20);
-            float kelvinpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((kelvin - kelvinmin) / (kelvinmax - kelvinmin)));
-            float kelvinheight = mult + mult * 1;
-            type(""+kelvinmin, (int)(barstart)-12,(int)kelvinheight-20);
-            type(""+kelvinmax, (int)(barstart+barlength-12),(int)kelvinheight-20);
-            type((int)(kelvin)+"",(int)kelvinpos-12,(int)kelvinheight-20);
-            type("Kelvin",(int)(barstart+barlength/2-25),(int)(kelvinheight-40));
-            drawBox(kelvinpos,kelvinheight,10,20);
-            drawBox(elementpos,elementheight,10,20);
+            drawBox(volumeSliderPosition,volumeVerticalPosition,10,20);
+            type(""+ minimumKelvin, (int)(barStartPosition)-12,(int)kelvinVerticalPosition-20);
+            type(""+ maximumKelvin, (int)(barStartPosition+ sliderLength -12),(int)kelvinVerticalPosition-20);
+            type((int)(kelvin)+"",(int)kelvinSliderPosition-12,(int)kelvinVerticalPosition-20);
+            type("Kelvin",(int)(barStartPosition+ sliderLength /2-25),(int)(kelvinVerticalPosition-40));
+            drawBox(kelvinSliderPosition,kelvinVerticalPosition,10,20);
+            drawBox(elementSliderPosition,elementVerticalPosition,10,20);
             if (Mouse.isButtonDown(0)) {
                 int x = Mouse.getX();
                 int y = (Box.getHeight()-Mouse.getY());
-                System.out.println((x-volumepos)+" "+(y-volumeheight));
-                if (x >= Box.getWidth() && x < Box.getWidth() + inputpanel && y > 0 && y < Box.getHeight()) {
-                    if (x > (volumepos - 5) && x < (volumepos + 5) && y > (volumeheight - 10) && y < (volumeheight + 10)) {
-                        if (guinum == -1) {
-                            guinum = 0;
+                System.out.println((x-volumeSliderPosition)+" "+(y-volumeVerticalPosition));
+                if (x >= Box.getWidth() && x < Box.getWidth() + interfaceWidth && y > 0 && y < Box.getHeight()) {
+                    if (x > (volumeSliderPosition - 5) && x < (volumeSliderPosition + 5) && y > (volumeVerticalPosition - 10) && y < (volumeVerticalPosition + 10)) {
+                        if (selectedSlider == -1) {
+                            selectedSlider = 0;
                         }
                     }
-                    if (x > (kelvinpos - 5) && x < (kelvinpos + 5) && y > (kelvinheight - 10) && y < (kelvinheight + 10)) {
-                        if (guinum == -1) {
-                            guinum = 1;
+                    if (x > (kelvinSliderPosition - 5) && x < (kelvinSliderPosition + 5) && y > (kelvinVerticalPosition - 10) && y < (kelvinVerticalPosition + 10)) {
+                        if (selectedSlider == -1) {
+                            selectedSlider = 1;
                         }
                     }
-                    if (x > (elementpos - 5) && x < (elementpos + 5) && y > (elementheight - 10) && y < (elementheight + 10)) {
-                        if (guinum == -1) {
-                            guinum = 2;
+                    if (x > (elementSliderPosition - 5) && x < (elementSliderPosition + 5) && y > (elementVerticalPosition - 10) && y < (elementVerticalPosition + 10)) {
+                        if (selectedSlider == -1) {
+                            selectedSlider = 2;
                         }
                     }
                 }
-                if (guinum == 0) {
-                    volume = volumemin+((volumemax-volumemin)*((x-barstart)/(barlength)));
-                    volume = Math.max(Math.min(volume, volumemax), volumemin);
+                if (selectedSlider == 0) {
+                    volume = minimumVolume +((maximumVolume - minimumVolume)*((x-barStartPosition)/(sliderLength)));
+                    volume = Math.max(Math.min(volume, maximumVolume), minimumVolume);
                 }
-                if (guinum == 1){
-                    kelvin = kelvinmin+((kelvinmax-kelvinmin)*((x-barstart)/(barlength)));
-                    kelvin = Math.max(Math.min(kelvin, kelvinmax), kelvinmin);
+                if (selectedSlider == 1){
+                    kelvin = minimumKelvin +((maximumKelvin - minimumKelvin)*((x-barStartPosition)/(sliderLength)));
+                    kelvin = Math.max(Math.min(kelvin, maximumKelvin), minimumKelvin);
                 }
-                if (guinum == 2){
-                    g = (int)(((elementLength-1)*((x-barstart)/(barlength))));
-                    g = Math.max(Math.min(g,elementLength-1),0);
-                    element = Element.values()[g];
+                if (selectedSlider == 2){
+                    selectedElement = (int)(((elementLength-1)*((x-barStartPosition)/(sliderLength))));
+                    selectedElement = Math.max(Math.min(selectedElement,elementLength-1),0);
+                    element = Element.values()[selectedElement];
                 }
             } else {
-                guinum = -1;
+                selectedSlider = -1;
             }
             update();
             Display.update();
