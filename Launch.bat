@@ -1,0 +1,1 @@
+java -jar -Xmx4096m "/out/artifacts/ParticleSimulation_jar/ParticleSim.jar"
