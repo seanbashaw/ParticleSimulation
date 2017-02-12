@@ -512,9 +512,9 @@ public class Gui {
     private static int fps = 60;
     private float minimumVolume = 1;
     private float maximumVolume = 100;
-    private float volume = (maximumVolume + minimumVolume) / 2;
-    private float minimumKelvin = 1f;
-    private float maximumKelvin = 1000;
+    private float volume = minimumVolume;
+    private float minimumKelvin = 10f;
+    private float maximumKelvin = 1000f;
     private float selectedSlider = -1;
     private int selectedElement = 0;
     private Element element=Element.values()[selectedElement];
@@ -543,7 +543,7 @@ public class Gui {
         }
         return 0;
     }
-    private float kelvin = (maximumKelvin + minimumKelvin) / 2;
+    private float kelvin = minimumKelvin;
     private void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex2f(x-width/2, y+height/2);
