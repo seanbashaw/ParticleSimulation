@@ -6,7 +6,7 @@ import hack.brickhack3.gui.Gui;
  * Created by Connor on 2/11/2017.
  * Class for the particles flying around and stuff
  */
-public class Particle implements Runnable {
+public class Particle {
 
     private double x;
     private double y;
@@ -16,7 +16,6 @@ public class Particle implements Runnable {
     private final int radius;
 
     private double deltaT;
-    private boolean complete;
 
     public Particle(double x, double y, int radius) {
         this.x = x;
@@ -150,10 +149,6 @@ public class Particle implements Runnable {
         }
     }
 
-    public boolean isComplete() {
-        return this.complete;
-    }
-
     public double getDeltaT() {
         return deltaT;
     }
@@ -162,16 +157,12 @@ public class Particle implements Runnable {
         this.deltaT = deltaT;
     }
 
-    @Override
-    public void run() {
-        this.complete = false;
+    public void update() {
         this.updatePosition();
         this.wallCollisions();
         // check for other collisions
 
-        this.complete = true;
-
-
 
     }
+
 }
