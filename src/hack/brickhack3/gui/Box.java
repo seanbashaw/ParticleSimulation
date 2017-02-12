@@ -9,9 +9,10 @@ import java.util.ArrayList;
  * Created by seanb on 2/11/2017.
  */
 public class Box {
-    public Particle[] particles;
-    private static int width=1080;
-    private static int height=1080;
+
+    private Particle[] particles;
+    private static int width = 1080;
+    private static int height = 1080;
     private double DEG2RAD = Math.PI / 180;
 
     public Box(Particle[] particles){
@@ -21,7 +22,6 @@ public class Box {
     public Box(int num_particles) {
         this.particles = this.createParticles(num_particles);
         this.distributeParticles(this.particles);
-
     }
 
     public static int getWidth() {
@@ -76,7 +76,7 @@ public class Box {
     /**
      *  Constants needed for speed and such
      */
-    private double T = 2093, M = 1, R = 8.3145;
+    private double T = 20093, M = 1, R = 8.3145;
 
 
     /**
@@ -88,7 +88,6 @@ public class Box {
         return 4 * Math.PI * Math.pow((M/2 * Math.PI * R * T) , (3/2)) * Math.pow( v , 2 )
                 * Math.exp((-M * Math.pow( v , 2 ) / (2 * R * T)));
     }
-
 
     /**
      * Create an array of particles with weighted speeds and random directions and positions

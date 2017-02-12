@@ -154,6 +154,9 @@ public class Particle {
      * @param that
      */
     public void particleCollide(Particle that){
+        //Check if actually colliding
+        if (Math.sqrt(Math.pow(this.x - that.x , 2) + Math.pow(this.y - that.y , 2)) > (2 * radius)) return;
+
         double theta1 = Math.atan(this.velX / this.velY);
         double theta2 = Math.atan(that.velX / that.velY);
 
