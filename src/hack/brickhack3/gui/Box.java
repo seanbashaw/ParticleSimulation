@@ -52,8 +52,14 @@ public class Box {
             p.updatePosition();
             p.wallCollisions();
 
-            for(Particle p2 : particles){
-                if(p != p2) p.particleCollide(p2);
+            int i = 0;
+            while(i < particles.length){
+                int j = i + 1;
+                while(j < particles.length){
+                    particles[i].particleCollide(particles[j]);
+                    j += 1;
+                }
+                i += 1;
             }
         }
     }
