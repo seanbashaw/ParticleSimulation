@@ -7,7 +7,7 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
 public class Gui {
-    private Gui(Box p){
+    public Gui(Box p){
         this.box = p;
     }
 
