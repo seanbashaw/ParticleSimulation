@@ -13,6 +13,7 @@ public class Box {
     private static int width=1080;
     private static int height=1080;
     private double DEG2RAD = Math.PI / 180;
+
     public Box(Particle[] particles){
         this.particles = particles;
     }
@@ -20,6 +21,7 @@ public class Box {
     public Box(int num_particles) {
         this.particles = this.createParticles(num_particles);
         this.distributeParticles(this.particles);
+
     }
 
     public static int getWidth() {
@@ -44,9 +46,25 @@ public class Box {
     }
 
     public void update() {
-        for(Particle p : this.particles){
-            p.setDeltaT(1.00/Gui.getFps());
-            new Thread(p).start();
+        if (this.particles.length > 50) {
+            for (int i = 0; i < this.particles.length; i += 50) {
+                final int i_temp = i;
+                System.out.println(i_temp);
+                new Thread(() -> {
+                    for (int k = 0; k < 51; k += 1) {
+                        try {
+                            this.particles[k + i_temp].setDeltaT(1.00/Gui.getFps());
+                            this.particles[k + i_temp].update();
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+                }).start();
+            }
+        } else {
+            for (Particle p : this.particles) {
+                p.update();
+            }
         }
     }
 
@@ -100,7 +118,7 @@ public class Box {
 
     private void distributeParticles(Particle[] arr) {
         int N = arr.length;
-        ArrayList<Particle> placed = new ArrayList<Particle>();
+        ArrayList<Particle> placed = new ArrayList<>();
 
         int i = 0;
         while (i < N) {
