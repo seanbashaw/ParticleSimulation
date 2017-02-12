@@ -154,7 +154,7 @@ public class Box {
     /**
      *  Constants needed for speed and such
      */
-    private double T = 293, M = 0.00100794, R = 8.3145;
+    private double T = 1, M = 0.00100794, R = 8.3145;
 
     /**
      * This function describes the distributions of the speed
@@ -189,7 +189,7 @@ public class Box {
             }
             System.out.println("v=" + v + ", func(v)=" + func(v));
 
-            arr[i] = new Particle(0, 0, 10);
+            arr[i] = new Particle(0, 0, 400);
             double dir = Math.random() * 2 * Math.PI;
             arr[i].setVelocity(v, dir);
 

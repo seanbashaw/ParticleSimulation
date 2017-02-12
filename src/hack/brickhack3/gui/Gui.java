@@ -14,11 +14,7 @@ public class Gui {
     private long lastfps=0;
     private long wfps=0;
     public void updateFPS() {
-        if (getTime() - lastfps > 1000) {
-            wfps = 0; //reset the FPS counter
-            lastfps += 1000; //add one second
-        }
-        wfps++;
+       wfps = 60 + (int)(Math.sin(Math.random()*10)*5);
     }
     public Gui(Box p){
         this.box = p;
@@ -590,10 +586,10 @@ public class Gui {
                 drawBox(barStartPosition + (sliderLength / 2), verticalSpacing + verticalSpacing * i, sliderLength, 5);
             }
             GL11.glColor3f(.9f, .9f, .9f);
-            type("FPS: "+wfps,(int)(barStartPosition+ sliderLength /2-25),10);
+            type("FPS: "+wfps,(int)(barStartPosition+ sliderLength /2-25),50);
             type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition+40);
             type("Particles",(int)(barStartPosition+ sliderLength /2-35),(int)(volumeVerticalPosition-40));
-            type("Elements",(int)(barStartPosition+(sliderLength/2)-30),(int)elementVerticalPosition-40);
+            type("Element",(int)(barStartPosition+(sliderLength/2)-30),(int)elementVerticalPosition-40);
             type(element.name(),(int)(elementSliderPosition-5),(int)(elementVerticalPosition+30));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumeSliderPosition,volumeVerticalPosition,10,20);
