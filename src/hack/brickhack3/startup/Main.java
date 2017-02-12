@@ -12,7 +12,7 @@ public class Main {
     /**
      *  Constants needed for speed and such
      */
-    private static double T = 293, M = 1, R = 8.3145;
+    private static double T = 2093, M = 1, R = 8.3145;
 
 
     /**
@@ -21,7 +21,7 @@ public class Main {
      * @return the fraction of particles that will have that speed.
      */
     private static double func(double v){
-        return 4 * Math.PI * Math.pow( (3/2) , (M/2 * Math.PI * R * T)) * Math.pow( v , 2 )
+        return 4 * Math.PI * Math.pow((M/2 * Math.PI * R * T) , (3/2)) * Math.pow( v , 2 )
                 * Math.exp((-M * Math.pow( v , 2 ) / (2 * R * T)));
     }
 
@@ -88,6 +88,7 @@ public class Main {
         box.start();
 
         //move to thread?
+
 
 
 

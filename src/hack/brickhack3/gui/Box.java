@@ -507,8 +507,8 @@ public class Box {
         }
         GL11.glEnd();
     }
-    private static int width = 800;
-    private static int height = 800;
+    private static int width = 1080;
+    private static int height = 1080;
     private static int inputpanel = 400;
     private static int barlength = 300;
     private float volumemin = 0;
@@ -618,8 +618,13 @@ public class Box {
     }
 
     public void update() {
-        for (int i = 0; i < particles.length; i++){
+        int i = 0;
+        while(i < particles.length){
+            particles[i].setDeltaT(0.010);
             particles[i].updatePosition();
+            particles[i].wallCollisions();
+
+            i += 1;
         }
     }
 }
