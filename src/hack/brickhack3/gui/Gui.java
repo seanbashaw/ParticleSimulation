@@ -591,14 +591,16 @@ public class Gui {
             }
             GL11.glColor3f(.9f, .9f, .9f);
             type("FPS: "+wfps,(int)(barStartPosition+ sliderLength /2-25),10);
-            type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition-20);
+            type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition+40);
             type("Particles",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
             type(element.name(),(int)(barStartPosition+ sliderLength /2)-25,(int)(elementVerticalPosition-40));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumeSliderPosition,volumeVerticalPosition,10,20);
+            type(""+ minimumVolume, (int)(barStartPosition)-12,(int)volumeVerticalPosition-20);
+            type(""+ maximumVolume, (int)(barStartPosition+ sliderLength -12),(int)volumeVerticalPosition-20);
             type(""+ minimumKelvin, (int)(barStartPosition)-12,(int)kelvinVerticalPosition-20);
             type(""+ maximumKelvin, (int)(barStartPosition+ sliderLength -12),(int)kelvinVerticalPosition-20);
-            type((int)(kelvin)+"",(int)kelvinSliderPosition-12,(int)kelvinVerticalPosition-20);
+            type((int)(kelvin)+"",(int)kelvinSliderPosition-12,(int)kelvinVerticalPosition+40);
             type("Kelvin",(int)(barStartPosition+ sliderLength /2-25),(int)(kelvinVerticalPosition-40));
             drawBox(kelvinSliderPosition,kelvinVerticalPosition,10,20);
             drawBox(elementSliderPosition,elementVerticalPosition,10,20);
