@@ -42,8 +42,8 @@
       <file leaf-file-name="Box.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3877">
-              <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+            <state relative-caret-position="-421">
+              <caret line="156" column="37" lean-forward="false" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#261#262#0" expanded="true" />
@@ -60,8 +60,8 @@
       <file leaf-file-name="Gui.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="704" column="46" lean-forward="false" selection-start-line="704" selection-start-column="46" selection-end-line="704" selection-end-column="46" />
+            <state relative-caret-position="66">
+              <caret line="549" column="38" lean-forward="false" selection-start-line="549" selection-start-column="34" selection-end-line="549" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#type#0;class#Gui#0" expanded="false" />
@@ -960,7 +960,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486906678863</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Tried fixing fullscreen">
+      <created>1486906922509</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1486906922509</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1036,7 +1043,8 @@
     <MESSAGE value="Added FULLSCREEN" />
     <MESSAGE value="GUI COMPLETE" />
     <MESSAGE value="Fixed size and volume ratio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed size and volume ratio" />
+    <MESSAGE value="Tried fixing fullscreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tried fixing fullscreen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1788,8 +1796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3877">
-          <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+        <state relative-caret-position="-421">
+          <caret line="156" column="37" lean-forward="false" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#261#262#0" expanded="true" />
@@ -1804,8 +1812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="704" column="46" lean-forward="false" selection-start-line="704" selection-start-column="46" selection-end-line="704" selection-end-column="46" />
+        <state relative-caret-position="66">
+          <caret line="549" column="38" lean-forward="false" selection-start-line="549" selection-start-column="34" selection-end-line="549" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#type#0;class#Gui#0" expanded="false" />

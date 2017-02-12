@@ -668,7 +668,6 @@ public class Gui {
 
         try {
             DisplayMode targetDisplayMode = null;
-
             if (fullscreen) {
                 DisplayMode[] modes = Display.getAvailableDisplayModes();
                 int freq = 0;
