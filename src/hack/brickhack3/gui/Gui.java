@@ -502,7 +502,7 @@ public class Gui {
     private float minimumVolume = 1;
     private float maximumVolume = 100;
     private float volume = (maximumVolume + minimumVolume) / 2;
-    private float minimumKelvin = 0.1f;
+    private float minimumKelvin = 1f;
     private float maximumKelvin = 1000;
     private float selectedSlider = -1;
     private int selectedElement = 0;
@@ -617,39 +617,31 @@ public class Gui {
                     if (x> (barStartPosition)&& x < barStartPosition+ sliderLength && y > verticalSpacing*4 - 40 && y < verticalSpacing*4 + 40&&!toggle){
                         toggle = true;
                         box.setPaused(!box.isPaused());
+                        box = new Box((int)Math.pow(2,volume/10),kelvin,setM(element));
+                        Particle.setRadius((int)(400/volume));
                     }
                 }
                 if (selectedSlider == 0) {
                     volume = minimumVolume +((maximumVolume - minimumVolume)*((x-barStartPosition)/(sliderLength)));
                     volume = Math.max(Math.min(volume, maximumVolume), minimumVolume);
+                    box.setPaused(true);
                 }
                 if (selectedSlider == 1){
                     kelvin = minimumKelvin +((maximumKelvin - minimumKelvin)*((x-barStartPosition)/(sliderLength)));
                     kelvin = Math.max(Math.min(kelvin, maximumKelvin), minimumKelvin);
+                    box.setPaused(true);
                 }
                 if (selectedSlider == 2){
                     selectedElement = (int)(((elementLength-1)*((x-barStartPosition)/(sliderLength))));
                     selectedElement = Math.max(Math.min(selectedElement,elementLength-1),0);
                     element = Element.values()[selectedElement];
+                    box.setPaused(true);
                 }
             } else {
                 selectedSlider = -1;
                 toggle=false;
             }
-            while (Keyboard.next()) {
-                if (Keyboard.getEventKeyState()) {
-                    if (Keyboard.getEventKey() == Keyboard.KEY_F) {
-                        setDisplayMode(800, 600, !Display.isFullscreen());
-                    }
-                    else if (Keyboard.getEventKey() == Keyboard.KEY_V) {
-                        vsync = !vsync;
-                        Display.setVSyncEnabled(vsync);
-                    }else if (Keyboard.getEventKey() == Keyboard.KEY_SPACE){
-                        box = new Box((int)Math.pow(volume/3,2),kelvin,setM(element));
-                        Particle.setRadius((int)(200/volume));
-                    }
-                }
-            }
+
             update();
             Display.update();
         }
