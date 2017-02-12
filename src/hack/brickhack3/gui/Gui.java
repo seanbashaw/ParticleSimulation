@@ -528,6 +528,7 @@ public class Gui {
         int elementLength = 5;
         try {
             Display.setDisplayMode(new DisplayMode(Box.getWidth() + interfaceWidth, Box.getHeight()));
+            Display.setVSyncEnabled(true);
             Display.setFullscreen(true);
             Display.setTitle("Particle Simulator - BrickHacks 3");
             Display.create();
