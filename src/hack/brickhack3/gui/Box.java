@@ -134,19 +134,19 @@ public class Box {
 
     public void setM(Element e) {
         if (e == Element.HELIUM){
-         M = 0.004002602;
+            M = 0.004002602;
         }
         if (e == Element.HYDROGEN){
             M = 0.00100794;
         }
         if (e == Element.NEON){
-M = 0.0201797;
+            M = 0.0201797;
         }
         if (e == Element.NITROGEN){
-M = 0.0140067;
+            M = 0.0140067;
         }
         if (e == Element.OXYGEN){
-M = 0.0159994;
+            M = 0.0159994;
         }
     }
 
@@ -154,7 +154,7 @@ M = 0.0159994;
     /**
      *  Constants needed for speed and such
      */
-    private double T = 293, M = 0.001, R = 8.3145;
+    private double T = 293, M = 0.00100794, R = 8.3145;
 
     /**
      * This function describes the distributions of the speed
@@ -180,10 +180,12 @@ M = 0.0159994;
 
         int i = 0;
         while(i < N) {
-            double sum = 0;
+            double sum = 0, d = (1.0 / N);
+            if(T < 150.0) d *= 0.5;
+            if(T < 50.0) d *= 0.5;
             while (sum < 1.0 / (N + 1)) {
-                sum += func(v) * (1.0/N);
-                v += (1.0/N);
+                sum += func(v) * d;
+                v += d;
             }
             System.out.println("v=" + v + ", func(v)=" + func(v));
 

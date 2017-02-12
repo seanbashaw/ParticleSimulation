@@ -10,7 +10,7 @@ import hack.brickhack3.gui.Gui;
 public class Main {
 
     public static void main(String[] args){
-        Box box = new Box(250);
+        Box box = new Box(1);
         Gui gui = new Gui(box);
         gui.start();
 
