@@ -155,6 +155,8 @@ public class Particle {
      * @param that
      */
     public void particleCollide(Particle that){
+        if (that==null) return;
+        if (that==this) return;
         Vector2f pos1 = new Vector2f((float)this.x, (float)this.y);
         Vector2f pos2 = new Vector2f((float)that.x, (float)that.y);
         Vector2f delta = (pos2.add(pos1.negate()));

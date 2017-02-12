@@ -15,6 +15,7 @@ public class Box {
     private static int width = 1080;
     private static int height = 1080;
     private double DEG2RAD = Math.PI / 180;
+    private QuadTree quad;
 
     public Box(Particle[] particles){
         this.particles = particles;
@@ -23,6 +24,7 @@ public class Box {
     public Box(int num_particles) {
         this.particles = this.createParticles(num_particles);
         this.distributeParticles(this.particles);
+        this.quad = new QuadTree(0,new Rectangle(0,0,1080,1080));
     }
 
     public static int getWidth() {
@@ -63,7 +65,7 @@ public class Box {
                 i += 1;
             }
         }*/
-
+        this.quad.clear();
         if (this.particles.length > 50) {
             for (int i = 0; i < this.particles.length; i += 50) {
                 final int i_temp = i;
@@ -83,10 +85,24 @@ public class Box {
             }
         } else {
             for (Particle p : this.particles) {
+                p.setDeltaT(1.0/Gui.getFps());
                 p.update();
             }
-        }
 
+        }
+        for(int i = 0; i < this.particles.length; i++){
+            quad.insert(particles[i]);
+        }
+        ArrayList<Particle> returnObjects = new ArrayList<Particle>();
+        for (int l = 0; l < this.particles.length; l++){
+            returnObjects.clear();
+            this.quad.retrieve(returnObjects,this.particles[l]);
+            System.out.println(returnObjects.size());
+            for (int x = 0; x < returnObjects.size(); x++){
+                this.particles[l].particleCollide(returnObjects.get(x));
+            }
+        }
+        this.quad.clear();
         // this section is called once
     }
 
@@ -122,7 +138,7 @@ public class Box {
             while(j > 0 && i < N){
 
                 //create a particle with speed v
-                arr[i] = new Particle(0, 0, 10);
+                arr[i] = new Particle(0, 0, 5);
                 double dir = Math.random() * 2 * Math.PI;
                 arr[i].setVelocity(v, dir);
 
@@ -158,7 +174,7 @@ public class Box {
                 }
                 else {
                     for (Particle P : placed) {
-                        if (P.getX() == x && P.getY() == y) isSamePos = true;
+                        if ((P.getX() >= x+P.getRadius()) && (x-P.getRadius() >= P.getX()) && (P.getY() >= y+P.getRadius() && y-P.getRadius() >= P.getY() )) isSamePos = true;
                     }
                     if (!isSamePos) {
                         p.setX(x);
