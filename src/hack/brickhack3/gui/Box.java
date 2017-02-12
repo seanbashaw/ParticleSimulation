@@ -44,13 +44,9 @@ public class Box {
     }
 
     public void update() {
-        int i = 0;
-        while(i < particles.length){
-            particles[i].setDeltaT(1.00/Gui.getFps());
-            particles[i].updatePosition();
-            particles[i].wallCollisions();
-
-            i += 1;
+        for(Particle p : this.particles){
+            p.setDeltaT(1.00/Gui.getFps());
+            new Thread(p).start();
         }
     }
 
