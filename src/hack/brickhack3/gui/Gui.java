@@ -515,7 +515,8 @@ public class Gui {
     private float guinum = -1;
     private float minimumtime = 0;
     private float maximumtime = 10;
-    private Element element;
+    private int g = 0;
+    private Element element=Element.values()[g];
     private enum Element{
         HYDROGEN,
         HELIUM,
@@ -523,6 +524,7 @@ public class Gui {
         NITROGEN,
         NEON
     };
+    private int elementLength = 5;
     public float kelvin = (kelvinmax + kelvinmin) / 2;
     public void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
@@ -560,15 +562,19 @@ public class Gui {
             }
             float volumepos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
             float volumeheight = mult + mult * 0;
+            float elementpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * g) / (elementLength-1);
+            float elementheight = mult + mult * 2;
             type(""+volumemin, (int)(barstart)-10,(int)volumeheight-20);
             type(""+volumemax, (int)(barstart+barlength-10),(int)volumeheight-20);
             type(Float.toString(volume).substring(0,3),(int)volumepos-10,(int)volumeheight-20);
             type("Volume",(int)(barstart+barlength/2-25),(int)(volumeheight-40));
+            type(element.name(),(int)(barstart+barlength/2)-25,(int)(elementheight-40));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumepos,volumeheight,10,20);
             float kelvinpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((kelvin - kelvinmin) / (kelvinmax - kelvinmin)));
             float kelvinheight = mult + mult * 1;
             drawBox(kelvinpos,kelvinheight,10,20);
+            drawBox(elementpos,elementheight,10,20);
             if (Mouse.isButtonDown(0)) {
                 int x = Mouse.getX();
                 int y = (Box.getHeight()-Mouse.getY());
@@ -584,6 +590,11 @@ public class Gui {
                             guinum = 1;
                         }
                     }
+                    if (x > (elementpos - 5) && x < (elementpos + 5) && y > (elementheight - 10) && y < (elementheight + 10)) {
+                        if (guinum == -1) {
+                            guinum = 2;
+                        }
+                    }
                 }
                 if (guinum == 0) {
                     volume = volumemin+((volumemax-volumemin)*((x-barstart)/(barlength)));
@@ -592,6 +603,11 @@ public class Gui {
                 if (guinum == 1){
                     kelvin = kelvinmin+((kelvinmax-kelvinmin)*((x-barstart)/(barlength)));
                     kelvin = Math.max(Math.min(kelvin, kelvinmax), kelvinmin);
+                }
+                if (guinum == 2){
+                    g = (int)(((elementLength-1)*((x-barstart)/(barlength))));
+                    g = Math.max(Math.min(g,elementLength-1),0);
+                    element = Element.values()[g];
                 }
             } else {
                 guinum = -1;
