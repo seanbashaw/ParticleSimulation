@@ -112,7 +112,7 @@ public class Particle {
      * @param direction a direction (in degrees)
      */
     public void setVelocity(double magnitude, double direction) {
-        magnitude *= 500;
+        //magnitude *= 500;
         this.velX = magnitude * Math.cos(direction);
         this.velY = magnitude * Math.sin(direction);
     }

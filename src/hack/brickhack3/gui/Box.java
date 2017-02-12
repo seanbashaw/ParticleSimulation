@@ -152,7 +152,7 @@ M = 0.0159994;
     /**
      *  Constants needed for speed and such
      */
-    private double T = 2093, M = 1, R = 8.3145;
+    private double T = 293, M = 0.001, R = 8.3145;
 
     /**
      * This function describes the distributions of the speed
@@ -160,8 +160,11 @@ M = 0.0159994;
      * @return the fraction of particles that will have that speed.
      */
     private double func(double v){
-        return 4 * Math.PI * Math.pow((M/2 * Math.PI * R * T) , (3/2)) * Math.pow( v , 2 )
-                * Math.exp((-M * Math.pow( v , 2 ) / (2 * R * T)));
+        double pi = Math.PI;
+        return 4.0 * pi
+                * Math.pow((M / (2.0 * pi * R * T)) , (3.0/2.0))
+                * Math.pow( v , 2.0 )
+                * Math.exp((-M * Math.pow( v , 2.0 )) / (2.0 * R * T));
     }
 
     /**
@@ -171,27 +174,28 @@ M = 0.0159994;
      */
     private Particle[] createParticles(int N){
         Particle[] arr = new Particle[N];
+        double v = 0, avgV = 0;
+
         int i = 0;
-
-        double v = 0;
-        while (i < N){
-
-            int j = (int)(func(v) * N);
-            if(j == 0 && i > 0) j = N;  //Catches right end of graph
-            while(j > 0 && i < N){
-
-                //create a particle with speed v
-                arr[i] = new Particle(0, 0, 5);
-                double dir = Math.random() * 2 * Math.PI;
-                arr[i].setVelocity(v, dir);
-
-                j -= 1;
-                i += 1;
+        while(i < N) {
+            double sum = 0;
+            while (sum < 1.0 / (N + 1)) {
+                sum += func(v) * (1.0/N);
+                v += (1.0/N);
             }
+            System.out.println("v=" + v + ", func(v)=" + func(v));
 
-            v += 1;
+            arr[i] = new Particle(0, 0, 10);
+            double dir = Math.random() * 2 * Math.PI;
+            arr[i].setVelocity(v, dir);
+
+            avgV += v;
+
+            i += 1;
         }
 
+        avgV /= N;
+        System.out.println("AvgV=" + avgV);
         return arr;
     }
 
