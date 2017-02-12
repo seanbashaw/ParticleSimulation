@@ -29,7 +29,6 @@ public class Box {
     public static int getWidth() {
         return width;
     }
-
     public static int getHeight() {
         return height;
     }
@@ -508,6 +507,12 @@ public class Box {
         GL11.glEnd();
     }
     private static int width = 1080;
+
+    public static int getFps() {
+        return fps;
+    }
+
+    private static int fps = 60;
     private static int height = 1080;
     private static int inputpanel = 400;
     private static int barlength = 300;
@@ -519,11 +524,19 @@ public class Box {
     private float guinum = -1;
     public float kelvin = (kelvinmax + kelvinmin) / 2;
     private double DEG2RAD = Math.PI / 180;
-
+    public void drawBox(float x, float y, float width, float height){
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex2f(x-width/2, y+height/2);
+        GL11.glVertex2f(x-width/2, y-height/2);
+        GL11.glVertex2f(x+width/2, y-height/2);
+        GL11.glVertex2f(x+width/2, y+height/2);
+        GL11.glEnd();
+    }
     public void start() {
         try {
             Display.setDisplayMode(new DisplayMode(width + inputpanel, height));
             Display.setFullscreen(true);
+            Display.setTitle("Particle Simulator - BrickHacks 3");
             Display.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
@@ -534,14 +547,10 @@ public class Box {
         GL11.glOrtho(0, width + inputpanel, height, 0, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         while (!Display.isCloseRequested()) {
+            Display.sync(fps);
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
             GL11.glColor3f(.7f, .7f, .7f);
-            GL11.glBegin(GL11.GL_QUADS);
-            GL11.glVertex2f(width, 0);
-            GL11.glVertex2f(width, height);
-            GL11.glVertex2f(width + inputpanel, height);
-            GL11.glVertex2f(width + inputpanel, 0);
-            GL11.glEnd();
+            drawBox(width+(inputpanel/2),height/2,inputpanel,height);
             GL11.glColor3f(.9f, .2f, .1f);
             for (int a = 0; a < particles.length; a++) {
                 Particle p = particles[a];
@@ -556,40 +565,23 @@ public class Box {
             float mult = height / 5;
             GL11.glColor3f(.9f, .9f, .9f);
             for (int i = 0; i < 3; i++) {
-                GL11.glBegin(GL11.GL_QUADS);
-                GL11.glVertex2f(barstart, mult + mult * i - 5);
-                GL11.glVertex2f(barstart, mult + mult * i + 5);
-                GL11.glVertex2f(barstart + barlength, mult + mult * i + 5);
-                GL11.glVertex2f(barstart + barlength, mult + mult * i - 5);
-                GL11.glEnd();
+                drawBox(barstart + (barlength / 2), mult + mult * i, barlength, 5);
             }
-
             float volumepos = (inputpanel - barlength) / 2 + width + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
             float volumeheight = mult + mult * 0;
             type(""+volumemin, (int)(barstart)-5,(int)volumeheight-10);
             type(""+volumemax, (int)(barstart)-5,(int)volumeheight-10);
             GL11.glColor3f(1f, 1f, 1f);
-            GL11.glBegin(GL11.GL_QUADS);
-            GL11.glVertex2f(volumepos - 5, volumeheight - 10);
-            GL11.glVertex2f(volumepos + 5, volumeheight - 10);
-            GL11.glVertex2f(volumepos + 5, volumeheight + 10);
-            GL11.glVertex2f(volumepos - 5, volumeheight + 10);
-            GL11.glEnd();
+            drawBox(volumepos,volumeheight,10,20);
             float kelvinpos = (inputpanel - barlength) / 2 + width + (barlength * ((kelvin - kelvinmin) / (kelvinmax - kelvinmin)));
             float kelvinheight = mult + mult * 1;
-            GL11.glBegin(GL11.GL_QUADS);
-            GL11.glVertex2f(kelvinpos - 5, kelvinheight - 10);
-            GL11.glVertex2f(kelvinpos + 5, kelvinheight - 10);
-            GL11.glVertex2f(kelvinpos + 5, kelvinheight + 10);
-            GL11.glVertex2f(kelvinpos - 5, kelvinheight + 10);
-            GL11.glEnd();
+            drawBox(kelvinpos,kelvinheight,10,20);
             if (Mouse.isButtonDown(0)) {
-
-                int x = (width+inputpanel)-Mouse.getX();
+                int x = Mouse.getX();
                 int y = (height-Mouse.getY());
+                System.out.println((x-volumepos)+" "+(y-volumeheight));
                 if (x >= width && x < width + inputpanel && y > 0 && y < height) {
                     if (x > (volumepos - 5) && x < (volumepos + 5) && y > (volumeheight - 10) && y < (volumeheight + 10)) {
-                        System.out.println("SEXY");
                         if (guinum == -1) {
                             guinum = 0;
                         }
@@ -620,7 +612,7 @@ public class Box {
     public void update() {
         int i = 0;
         while(i < particles.length){
-            particles[i].setDeltaT(0.010);
+            particles[i].setDeltaT(1.00/fps);
             particles[i].updatePosition();
             particles[i].wallCollisions();
 

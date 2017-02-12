@@ -107,6 +107,7 @@ public class Particle implements Runnable {
      * @param direction a direction (in degrees)
      */
     public void setVelocity(double magnitude, double direction) {
+        magnitude*=100;
         this.velX = magnitude * Math.cos(direction);
         this.velY = magnitude * Math.sin(direction);
     }
