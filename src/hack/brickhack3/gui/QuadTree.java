@@ -1,6 +1,7 @@
 package hack.brickhack3.gui;
 
 import hack.brickhack3.particle.Particle;
+import org.lwjgl.Sys;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
  * @Author: Federico Rueda.
  */
 public class QuadTree {
-    private int MAX_OBJECTS = 10;
-    private int MAX_LEVELS = 5;
+    private int MAX_OBJECTS = 5;
+    private int MAX_LEVELS = 10;
     private int level;
     private ArrayList<Particle> objects;
     private Rectangle bounds;
@@ -25,7 +26,7 @@ public class QuadTree {
         this.level = level;
         this.objects = new ArrayList<Particle>();
         this.bounds = bounds;
-        nodes = new QuadTree[4];
+        this.nodes = new QuadTree[4];
     }
 
     /**
@@ -52,10 +53,10 @@ public class QuadTree {
         int x = this.bounds.getX();
         int y = this.bounds.getY();
 
-        this.nodes[1] = new QuadTree(this.level + 1, new Rectangle(x + subWidth, y, subWidth,subHeight));
-        this.nodes[2] = new QuadTree(this.level + 1, new Rectangle(x,y,subWidth,subHeight));
-        this.nodes[3] = new QuadTree(this.level + 1, new Rectangle(x, y + subHeight, subWidth, subHeight));
-        this.nodes[4] = new QuadTree(this.level + 1, new Rectangle(x + subWidth,y+ subWidth,subWidth, subHeight));
+        this.nodes[0] = new QuadTree(this.level + 1, new Rectangle(x + subWidth, y, subWidth,subHeight));
+        this.nodes[1] = new QuadTree(this.level + 1, new Rectangle(x,y,subWidth,subHeight));
+        this.nodes[2] = new QuadTree(this.level + 1, new Rectangle(x, y + subHeight, subWidth, subHeight));
+        this.nodes[3] = new QuadTree(this.level + 1, new Rectangle(x + subWidth,y+ subHeight,subWidth, subHeight));
 
 
     }
@@ -98,7 +99,7 @@ public class QuadTree {
      * @param particle - particle that needs to be inserted in tree
      */
 
-    public void insert(Particle particle) {
+    public synchronized void insert(Particle particle) {
         if (this.nodes[0] != null) {
             int index = getIndex(particle);
             if (index != -1) {
@@ -109,14 +110,17 @@ public class QuadTree {
         this.objects.add(particle);
         if (objects.size() > MAX_OBJECTS && level < MAX_LEVELS) {
             if (nodes[0] == null) {
-                this.split();
+                split();
             }
             int i = 0;
             while (i < objects.size()) {
                 int index = getIndex(this.objects.get(i));
-                if (index != 1) {
-                    nodes[index].insert(this.objects.remove(i));
-                } else i++;
+                if (index != -1) {
+                    this.nodes[index].insert(this.objects.get(i));
+                    this.objects.remove(i);
+                } else {
+                    i++;
+                }
             }
         }
     }
@@ -129,8 +133,9 @@ public class QuadTree {
      * @return - list of object particles
      */
 
-    public ArrayList retrieve(ArrayList<Particle> returnObjects, Particle particle){
+    public ArrayList<Particle> retrieve(ArrayList<Particle> returnObjects, Particle particle){
         int index = getIndex(particle);
+
         if (index != -1 && nodes[0] != null){
             nodes[index].retrieve(returnObjects,particle);
         }
