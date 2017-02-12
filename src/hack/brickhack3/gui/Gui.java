@@ -492,7 +492,7 @@ public class Gui {
         }
         GL11.glEnd();
     }
-    private static int getFps() {
+    public static int getFps() {
         return fps;
     }
 
@@ -612,7 +612,6 @@ public class Gui {
         }
         Display.destroy();
     }
-
     private void update() {
         box.update();
     }
