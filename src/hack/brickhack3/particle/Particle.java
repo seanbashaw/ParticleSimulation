@@ -1,10 +1,6 @@
 package hack.brickhack3.particle;
-
 import hack.brickhack3.gui.Gui;
-import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.tests.SoundTest;
-
-import java.util.Vector;
+import hack.brickhack3.gui.QuadTree;
 
 /**
  * Created by Connor on 2/11/2017.
@@ -16,6 +12,7 @@ public class Particle {
     private double y;
     private double velX = 0;
     private double velY = 0;
+    private double mass;
 
     private final int radius;
 
@@ -25,6 +22,7 @@ public class Particle {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.mass = 1;
 
     }
 
@@ -111,7 +109,7 @@ public class Particle {
      * @param direction a direction (in degrees)
      */
     public void setVelocity(double magnitude, double direction) {
-        magnitude *= 500;
+        magnitude*=100;
         this.velX = magnitude * Math.cos(direction);
         this.velY = magnitude * Math.sin(direction);
     }
@@ -153,47 +151,29 @@ public class Particle {
         }
     }
 
+    public double getSpeed(){
+        return Math.pow((Math.pow(this.getVelX(),2) + Math.pow(this.getVelY(),2)),0.5);
+    }
+
     /**
      * Calculate the new velocity and
      * @param that
      */
     public void particleCollide(Particle that){
-        Vector2f pos1 = new Vector2f((float)this.x, (float)this.y);
-        Vector2f pos2 = new Vector2f((float)that.x, (float)that.y);
-        Vector2f delta = (pos2.add(pos1.negate()));
-        float d = delta.length();
-        if(d > 2 * radius) return;
-        Vector2f mtd = delta.scale(((2 * radius) - d) / d);
-
-        pos1.add(mtd.scale(0.5f));
-        pos2.add(mtd.scale(-0.5f));
-
-        Vector2f vel1 = new Vector2f((float)this.velX, (float)this.velY);
-        Vector2f vel2 = new Vector2f((float)that.velX, (float)that.velY);
-
-        Vector2f n = mtd.scale(1/mtd.length());
-
-        Vector2f v = new Vector2f(0 , 0);
-        v.add(vel1);
-        v.add(vel2.negate());
-
-        float vn = v.dot(n);
-        if(vn > 0.0f) return;
-
-        float i = - vn / 1.0f;
-        Vector2f impulse = new Vector2f(n);
-        impulse.scale(i);
-
-        vel1.add(impulse);
-        vel2.add(impulse.negate());
-
-        this.velX = vel1.getX();
-        this.velY = vel1.getY();
-        that.velX = vel2.getX();
-        that.velY = vel2.getY();
-
-        this.updatePosition();
-        that.updatePosition();
+        double xDif = this.getX() - that.getX();
+        double yDif = this.getY() - that.getY();
+        double distanceSquared = xDif * xDif + yDif * yDif;
+        boolean collision = distanceSquared < (this.getRadius() + that.getRadius()) * (this.getRadius() + that.getRadius());
+        if (collision){
+            double VelX1 = that.getVelX();
+            double VelY1 = that.getVelY();
+            double VelX2 = this.getVelX();
+            double VelY2 = this.getVelX();
+            this.setVelY(VelY1);
+            this.setVelX(VelX1);
+            that.setVelX(VelX2);
+            that.setVelY(VelY2);
+        }
     }
 
     public double getDeltaT() {
@@ -207,6 +187,10 @@ public class Particle {
     public void update() {
         this.updatePosition();
         this.wallCollisions();
+
+        // check for other collisions
+
+
     }
 
 }
