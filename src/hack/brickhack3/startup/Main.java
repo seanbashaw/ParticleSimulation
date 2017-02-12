@@ -68,6 +68,7 @@ public class Main {
 
         int i = 0;
         while (i < N) {
+
             Particle p = arr[i];
             boolean isSamePos = true;
             //randomize position
