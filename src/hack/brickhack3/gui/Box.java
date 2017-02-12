@@ -107,7 +107,6 @@ public class Box {
         for (int l = 0; l < this.particles.length; l++){
             returnObjects.clear();
             this.quad.retrieve(returnObjects,this.particles[l]);
-            System.out.println(returnObjects.size());
             for (int x = 0; x < returnObjects.size(); x++){
                 this.particles[l].particleCollide(returnObjects.get(x));
             }

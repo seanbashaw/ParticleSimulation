@@ -43,8 +43,8 @@
       <file leaf-file-name="Box.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="-1597">
+              <caret line="109" column="45" lean-forward="false" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#262#263#0" expanded="true" />
@@ -59,8 +59,8 @@
       <file leaf-file-name="Gui.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1010">
-              <caret line="599" column="39" lean-forward="false" selection-start-line="599" selection-start-column="39" selection-end-line="599" selection-end-column="39" />
+            <state relative-caret-position="1109">
+              <caret line="618" column="28" lean-forward="false" selection-start-line="618" selection-start-column="28" selection-end-line="618" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#type#0;class#Gui#0" expanded="false" />
@@ -92,8 +92,8 @@
       <file leaf-file-name="Particle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+            <state relative-caret-position="436">
+              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
@@ -120,8 +120,8 @@
       <file leaf-file-name="QuadTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/QuadTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state relative-caret-position="99">
+              <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -141,6 +141,9 @@
       <find>Gui</find>
       <find>particle</find>
       <find>system.ou</find>
+      <find>syste</find>
+      <find>syst</find>
+      <find>system.out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -768,7 +771,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486898157502</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added paused GUI">
+      <created>1486898443223</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1486898443223</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -840,7 +850,8 @@
     <MESSAGE value="I committed!" />
     <MESSAGE value="Got rid of print" />
     <MESSAGE value="Added a pause thing to box" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a pause thing to box" />
+    <MESSAGE value="Added paused GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added paused GUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1452,14 +1463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/QuadTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Rectangle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1480,8 +1483,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+        <state relative-caret-position="436">
+          <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
@@ -1504,10 +1507,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/QuadTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        <state relative-caret-position="-1597">
+          <caret line="109" column="45" lean-forward="false" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#262#263#0" expanded="true" />
@@ -1520,8 +1531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1010">
-          <caret line="599" column="39" lean-forward="false" selection-start-line="599" selection-start-column="39" selection-end-line="599" selection-end-column="39" />
+        <state relative-caret-position="1109">
+          <caret line="618" column="28" lean-forward="false" selection-start-line="618" selection-start-column="28" selection-end-line="618" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#type#0;class#Gui#0" expanded="false" />

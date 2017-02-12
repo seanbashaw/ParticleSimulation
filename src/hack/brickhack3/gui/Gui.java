@@ -495,7 +495,7 @@ public class Gui {
     public static int getFps() {
         return fps;
     }
-
+    private boolean toggle = false;
     private static int fps = 60;
     private float minimumVolume = 0;
     private float maximumVolume = 4;
@@ -596,7 +596,8 @@ public class Gui {
                             selectedSlider = 2;
                         }
                     }
-                    if (x> (barStartPosition)&& x < barStartPosition+ sliderLength && y > verticalSpacing - 40 && y < verticalSpacing + 40){
+                    if (x> (barStartPosition)&& x < barStartPosition+ sliderLength && y > verticalSpacing*4 - 40 && y < verticalSpacing*4 + 40&&!toggle){
+                        toggle = true;
                         box.setPaused(!box.isPaused());
                     }
                 }
@@ -615,6 +616,7 @@ public class Gui {
                 }
             } else {
                 selectedSlider = -1;
+                toggle=false;
             }
             update();
             Display.update();
