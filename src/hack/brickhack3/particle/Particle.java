@@ -156,7 +156,7 @@ public class Particle {
     public void particleCollide(Particle that){
         //Check if actually colliding
         if (Math.sqrt(Math.pow(this.x - that.x , 2) + Math.pow(this.y - that.y , 2)) > (2 * radius)) {
-            System.out.println("No collision...");
+            //System.out.println("No collision...");
             return;
         }
 
@@ -168,14 +168,17 @@ public class Particle {
         double v1 = Math.sqrt(Math.pow(this.velX,2) + Math.pow(this.velY, 2));
         double v2 = Math.sqrt(Math.pow(that.velX,2) + Math.pow(that.velY, 2));
 
-        double phi = Math.atan((this.y - that.y) / (that.x - this.x));
         double pi = Math.PI;
+        double phi = Math.atan((this.y - that.y) / (that.x - this.x));
 
         this.velX = (v2 * Math.cos(theta2 - phi) * Math.cos(phi)) + (v1 * Math.sin(theta1 - pi) * Math.cos(phi + (pi/2)));
         this.velY = (v2 * Math.cos(theta2 - phi) * Math.sin(phi)) + (v1 * Math.sin(theta1 - pi) * Math.sin(phi + (pi/2)));
 
         that.velY = (v1 * Math.cos(theta1 - phi) * Math.sin(phi)) + (v2 * Math.sin(theta2 - pi) * Math.sin(phi + (pi/2)));
         that.velX = (v1 * Math.cos(theta1 - phi) * Math.cos(phi)) + (v2 * Math.sin(theta2 - pi) * Math.cos(phi + (pi/2)));
+
+        this.updatePosition();
+        that.updatePosition();
     }
 
     public double getDeltaT() {
