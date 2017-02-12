@@ -641,6 +641,17 @@ public class Gui {
             }
 
             update();
+            while (Keyboard.next()) {
+                if (Keyboard.getEventKeyState()) {
+                    if (Keyboard.getEventKey() == Keyboard.KEY_F) {
+                        setDisplayMode(800, 600, !Display.isFullscreen());
+                    }
+                    else if (Keyboard.getEventKey() == Keyboard.KEY_V) {
+                        vsync = !vsync;
+                        Display.setVSyncEnabled(vsync);
+                    }
+                }
+            }
             Display.update();
         }
         Display.destroy();
