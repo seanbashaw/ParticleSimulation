@@ -519,26 +519,26 @@ public class Gui {
     private int selectedElement = 0;
     private Element element=Element.values()[selectedElement];
     private enum Element{
-        HYDROGEN,
-        HELIUM,
-        OXYGEN,
-        NITROGEN,
-        NEON
+        H,
+        He,
+        O,
+        N,
+        Ne
     };
     public float setM(Element e) {
-        if (e == Element.HELIUM){
+        if (e == Element.He){
             return 0.004002602f;
         }
-        if (e == Element.HYDROGEN){
+        if (e == Element.H){
             return 0.00100794f;
         }
-        if (e == Element.NEON){
+        if (e == Element.Ne){
             return 0.0201797f;
         }
-        if (e == Element.NITROGEN){
+        if (e == Element.N){
             return 0.0140067f;
         }
-        if (e == Element.OXYGEN){
+        if (e == Element.O){
             return 0.0159994f;
         }
         return 0;
@@ -592,8 +592,9 @@ public class Gui {
             GL11.glColor3f(.9f, .9f, .9f);
             type("FPS: "+wfps,(int)(barStartPosition+ sliderLength /2-25),10);
             type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition+40);
-            type("Particles",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
-            type(element.name(),(int)(barStartPosition+ sliderLength /2)-25,(int)(elementVerticalPosition-40));
+            type("Particles",(int)(barStartPosition+ sliderLength /2-35),(int)(volumeVerticalPosition-40));
+            type("Elements",(int)(barStartPosition+(sliderLength/2)-30),(int)elementVerticalPosition-40);
+            type(element.name(),(int)(elementSliderPosition-5),(int)(elementVerticalPosition+30));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumeSliderPosition,volumeVerticalPosition,10,20);
             type(""+ minimumVolume, (int)(barStartPosition)-12,(int)volumeVerticalPosition-20);
