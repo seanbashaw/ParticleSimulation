@@ -12,6 +12,12 @@ import java.util.ArrayList;
 public class Box {
 
     private Particle[] particles;
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    private boolean paused = false;
     private static int width = 1080;
     private static int height = 1080;
     private double DEG2RAD = Math.PI / 180;
