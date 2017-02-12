@@ -4,6 +4,10 @@ import hack.brickhack3.gui.Box;
 import hack.brickhack3.gui.Gui;
 import hack.brickhack3.particle.Particle;
 
+import java.util.ArrayList;
+
+import static javafx.scene.input.KeyCode.P;
+
 /**
  * Created by Sean on 2/11/2017.
  * Start up found here
@@ -58,27 +62,38 @@ public class Main {
         return arr;
     }
 
-    private static void distributeParticles(Particle[] arr){
+    private static void distributeParticles(Particle[] arr) {
         int N = arr.length;
-        //Particle[] placed = new Particle[N];
+        ArrayList<Particle> placed = new ArrayList<Particle>();
 
         int i = 0;
-        while(i < N){
+        while (i < N) {
             Particle p = arr[i];
-
+            boolean isSamePos = true;
             //randomize position
-            //while(true){
-                p.setX((Math.random() * (Box.getWidth() - (2 * p.getRadius()))) + p.getRadius());
-                p.setY((Math.random() * (Box.getHeight() - (2 * p.getRadius()))) + p.getRadius());
-
-                //TODO: check if it overlaps
-
-            //    break;
-            //}
-
-            i += 1;
+            while (isSamePos) {
+                isSamePos = false;
+                double x = ((Math.random() * (Box.getWidth() - (2 * p.getRadius()))) + p.getRadius());
+                double y = ((Math.random() * (Box.getHeight() - (2 * p.getRadius()))) + p.getRadius());
+                if (placed.size()==0) {
+                    p.setX(x);
+                    p.setY(y);
+                    placed.add(p);
+                    i++;
+                }
+                else {
+                    for (Particle P : placed) {
+                        if (P.getX() == x && P.getY() == y) isSamePos = true;
+                    }
+                    if (!isSamePos) {
+                        p.setX(x);
+                        p.setY(y);
+                        placed.add(p);
+                        i++;
+                    }
+                }
+            }
         }
-
     }
 
     public static void main(String[] args){
