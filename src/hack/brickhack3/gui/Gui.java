@@ -5,24 +5,20 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
-import sun.font.TrueTypeFont;
 
-/**
- * Created by Connor on 2/11/2017.
- */
 public class Gui {
-    public Gui(Box p){
+    private Gui(Box p){
         this.box = p;
     }
-    TrueTypeFont font;
-    public Box box;
+
+    private Box box;
     public static int getWidth() {
         return Box.getWidth();
     }
     public static int getHeight() {
         return Box.getHeight();
     }
-    public void type(String s, int x, int y) {
+    private void type(String s, int x, int y) {
         int startX = x;
         GL11.glBegin(GL11.GL_POINTS);
         for (char c : s.toLowerCase().toCharArray()) {
@@ -90,7 +86,7 @@ public class Gui {
                     GL11.glVertex2f(x + 1, y - i);
                 }
                 for (int i = 1; i <= 6; i++) {
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                     GL11.glVertex2f(x + i, y - 8);
                 }
                 for (int i = 2; i <= 5; i++) {
@@ -140,7 +136,7 @@ public class Gui {
                     GL11.glVertex2f(x + 3, y - i);
                 }
                 for (int i = 1; i <= 5; i++) {
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                     GL11.glVertex2f(x + i, y - 8);
                 }
                 x += 7;
@@ -149,7 +145,7 @@ public class Gui {
                     GL11.glVertex2f(x + 6, y - i);
                 }
                 for (int i = 2; i <= 5; i++) {
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                 }
                 GL11.glVertex2f(x + 1, y - 3);
                 GL11.glVertex2f(x + 1, y - 2);
@@ -212,7 +208,7 @@ public class Gui {
                 }
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 8);
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                 }
                 x += 8;
             } else if (c == 'p') {
@@ -236,7 +232,7 @@ public class Gui {
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 8);
                     if (i != 6)
-                        GL11.glVertex2f(x + i, y + 0);
+                        GL11.glVertex2f(x + i, y);
                 }
                 GL11.glVertex2f(x + 4, y - 3);
                 GL11.glVertex2f(x + 5, y - 2);
@@ -291,7 +287,7 @@ public class Gui {
                     GL11.glVertex2f(x + 7, y - i);
                 }
                 for (int i = 2; i <= 6; i++) {
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                 }
                 x += 8;
             } else if (c == 'v') {
@@ -458,7 +454,7 @@ public class Gui {
                 }
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 8);
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                 }
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 4);
@@ -473,12 +469,12 @@ public class Gui {
                 }
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 8);
-                    GL11.glVertex2f(x + i, y + 0);
+                    GL11.glVertex2f(x + i, y);
                 }
                 for (int i = 2; i <= 6; i++) {
                     GL11.glVertex2f(x + i, y - 4);
                 }
-                GL11.glVertex2f(x + 1, y + 0);
+                GL11.glVertex2f(x + 1, y);
                 x += 8;
             } else if (c == '.') {
                 GL11.glVertex2f(x + 1, y);
@@ -496,22 +492,17 @@ public class Gui {
         }
         GL11.glEnd();
     }
-
-    public static int getFps() {
+    private static int getFps() {
         return fps;
     }
 
     private static int fps = 60;
-    private static int interfaceWidth = 400;
-    private static int sliderLength = 300;
     private float minimumVolume = 0;
     private float maximumVolume = 4;
     private float volume = (maximumVolume + minimumVolume) / 2;
     private float minimumKelvin = 0;
     private float maximumKelvin = 1000;
     private float selectedSlider = -1;
-    private float minimumtime = 0;
-    private float maximumtime = 10;
     private int selectedElement = 0;
     private Element element=Element.values()[selectedElement];
     private enum Element{
@@ -521,9 +512,9 @@ public class Gui {
         NITROGEN,
         NEON
     };
-    private int elementLength = 5;
-    public float kelvin = (maximumKelvin + minimumKelvin) / 2;
-    public void drawBox(float x, float y, float width, float height){
+
+    private float kelvin = (maximumKelvin + minimumKelvin) / 2;
+    private void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex2f(x-width/2, y+height/2);
         GL11.glVertex2f(x-width/2, y-height/2);
@@ -532,6 +523,9 @@ public class Gui {
         GL11.glEnd();
     }
     public void start() {
+        int sliderLength = 300;
+        int interfaceWidth = 400;
+        int elementLength = 5;
         try {
             Display.setDisplayMode(new DisplayMode(Box.getWidth() + interfaceWidth, Box.getHeight()));
             Display.setFullscreen(true);
@@ -619,7 +613,7 @@ public class Gui {
         Display.destroy();
     }
 
-    public void update() {
+    private void update() {
         box.update();
     }
 }
