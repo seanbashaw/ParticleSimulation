@@ -550,8 +550,10 @@ public class Gui {
             }
             float volumepos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((volume - volumemin) / (volumemax - volumemin)));
             float volumeheight = mult + mult * 0;
-            type(""+volumemin, (int)(barstart)-5,(int)volumeheight-10);
-            type(""+volumemax, (int)(barstart)-5,(int)volumeheight-10);
+            type(""+volumemin, (int)(barstart)-10,(int)volumeheight-20);
+            type(""+volumemax, (int)(barstart+barlength-10),(int)volumeheight-20);
+            type(Float.toString(volume).substring(0,3),(int)volumepos-10,(int)volumeheight-20);
+            type("Volume",(int)(barstart+barlength/2-25),(int)(volumeheight-40));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumepos,volumeheight,10,20);
             float kelvinpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((kelvin - kelvinmin) / (kelvinmax - kelvinmin)));

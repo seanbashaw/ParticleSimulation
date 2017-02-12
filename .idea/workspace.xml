@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Box.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Box.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
+            <state relative-caret-position="1353">
               <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -60,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gui.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gui.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="528" column="38" lean-forward="false" selection-start-line="528" selection-start-column="30" selection-end-line="528" selection-end-column="38" />
+            <state relative-caret-position="311">
+              <caret line="555" column="77" lean-forward="false" selection-start-line="555" selection-start-column="77" selection-end-line="555" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#359#360#0" expanded="true" />
@@ -74,8 +71,8 @@
                 <element signature="method#type#0;class#Gui#0" expanded="false" />
                 <element signature="e#19018#19019#0" expanded="true" />
                 <element signature="e#19044#19045#0" expanded="true" />
-                <element signature="e#23127#23128#0" expanded="true" />
-                <element signature="e#23155#23156#0" expanded="true" />
+                <element signature="e#23317#23318#0" expanded="true" />
+                <element signature="e#23345#23346#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -719,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486859618469</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Separated Box and Gui">
+      <created>1486860728073</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1486860728073</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -786,7 +790,8 @@
     <MESSAGE value="Fixed y" />
     <MESSAGE value="Fixed a typo and added a distributeParticles" />
     <MESSAGE value="Refactored BOX class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored BOX class" />
+    <MESSAGE value="Separated Box and Gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated Box and Gui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -810,8 +815,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,8 +886,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -952,8 +957,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1023,8 +1028,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1086,8 +1091,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1141,8 +1146,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1196,8 +1201,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1251,8 +1256,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1306,8 +1311,8 @@
             <element signature="method#type#0;class#Gui#0" expanded="false" />
             <element signature="e#19018#19019#0" expanded="true" />
             <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1444,28 +1449,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="528" column="38" lean-forward="false" selection-start-line="528" selection-start-column="30" selection-end-line="528" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="method#type#0;class#Gui#0" expanded="false" />
-            <element signature="e#19018#19019#0" expanded="true" />
-            <element signature="e#19044#19045#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23155#23156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
+        <state relative-caret-position="1353">
           <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1475,6 +1461,25 @@
             <element signature="e#454#455#0" expanded="true" />
             <element signature="e#491#492#0" expanded="true" />
             <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="555" column="77" lean-forward="false" selection-start-line="555" selection-start-column="77" selection-end-line="555" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="method#type#0;class#Gui#0" expanded="false" />
+            <element signature="e#19018#19019#0" expanded="true" />
+            <element signature="e#19044#19045#0" expanded="true" />
+            <element signature="e#23317#23318#0" expanded="true" />
+            <element signature="e#23345#23346#0" expanded="true" />
           </folding>
         </state>
       </provider>
