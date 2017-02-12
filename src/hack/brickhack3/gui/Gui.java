@@ -8,7 +8,18 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
+import static org.lwjgl.Sys.getTime;
+
 public class Gui {
+    private long lastfps=0;
+    private long wfps=0;
+    public void updateFPS() {
+        if (getTime() - lastfps > 1000) {
+            wfps = 0; //reset the FPS counter
+            lastfps += 1000; //add one second
+        }
+        wfps++;
+    }
     public Gui(Box p){
         this.box = p;
     }
@@ -542,6 +553,7 @@ public class Gui {
         GL11.glEnd();
     }
     public void start() {
+        lastfps = getTime();
         int sliderLength = 200;
         int interfaceWidth = 300;
         int elementLength = 5;
@@ -559,6 +571,7 @@ public class Gui {
         GL11.glOrtho(0, Box.getWidth() + interfaceWidth, Box.getHeight(), 0, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         while (!Display.isCloseRequested()) {
+            updateFPS();
             float barStartPosition = Box.getWidth() + (interfaceWidth - sliderLength) / 2;
             float verticalSpacing = Box.getHeight() / 5;
             float volumeSliderPosition = (interfaceWidth - sliderLength) / 2 + Box.getWidth() + (sliderLength * ((volume - minimumVolume) / (maximumVolume - minimumVolume)));
@@ -576,6 +589,8 @@ public class Gui {
             for (int i = 0; i < 3; i++) {
                 drawBox(barStartPosition + (sliderLength / 2), verticalSpacing + verticalSpacing * i, sliderLength, 5);
             }
+            GL11.glColor3f(.9f, .9f, .9f);
+            type("FPS: "+wfps,(int)(barStartPosition+ sliderLength /2-25),10);
             type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition-20);
             type("Particles",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
             type(element.name(),(int)(barStartPosition+ sliderLength /2)-25,(int)(elementVerticalPosition-40));
