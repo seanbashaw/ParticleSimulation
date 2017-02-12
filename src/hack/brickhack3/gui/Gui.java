@@ -573,6 +573,10 @@ public class Gui {
             drawBox(volumepos,volumeheight,10,20);
             float kelvinpos = (inputpanel - barlength) / 2 + Box.getWidth() + (barlength * ((kelvin - kelvinmin) / (kelvinmax - kelvinmin)));
             float kelvinheight = mult + mult * 1;
+            type(""+kelvinmin, (int)(barstart)-12,(int)kelvinheight-20);
+            type(""+kelvinmax, (int)(barstart+barlength-12),(int)kelvinheight-20);
+            type((int)(kelvin)+"",(int)kelvinpos-12,(int)kelvinheight-20);
+            type("Kelvin",(int)(barstart+barlength/2-25),(int)(kelvinheight-40));
             drawBox(kelvinpos,kelvinheight,10,20);
             drawBox(elementpos,elementheight,10,20);
             if (Mouse.isButtonDown(0)) {
