@@ -702,9 +702,8 @@ public class Gui {
                 System.out.println("Failed to find value mode: "+width+"x"+height+" fs="+fullscreen);
                 return;
             }
-
-            Display.setDisplayMode(targetDisplayMode);
             Display.setFullscreen(fullscreen);
+            Display.setDisplayMode(targetDisplayMode);
 
         } catch (LWJGLException e) {
             System.out.println("Unable to setup mode "+width+"x"+height+" fullscreen="+fullscreen + e);
