@@ -17,6 +17,10 @@ public class Box {
         return paused;
     }
 
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
     private boolean paused = false;
     private static int width = 1080;
     private static int height = 1080;

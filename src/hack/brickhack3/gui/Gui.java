@@ -571,6 +571,12 @@ public class Gui {
             type("Kelvin",(int)(barStartPosition+ sliderLength /2-25),(int)(kelvinVerticalPosition-40));
             drawBox(kelvinSliderPosition,kelvinVerticalPosition,10,20);
             drawBox(elementSliderPosition,elementVerticalPosition,10,20);
+            if (box.isPaused()){
+                GL11.glColor3f(1,0,0);
+            }else{
+                GL11.glColor3f(0,1,0);
+            }
+            drawBox(barStartPosition+sliderLength/2,verticalSpacing*4,sliderLength,40);
             if (Mouse.isButtonDown(0)) {
                 int x = Mouse.getX();
                 int y = (Box.getHeight()-Mouse.getY());
@@ -589,6 +595,9 @@ public class Gui {
                         if (selectedSlider == -1) {
                             selectedSlider = 2;
                         }
+                    }
+                    if (x> (barStartPosition)&& x < barStartPosition+ sliderLength && y > verticalSpacing - 40 && y < verticalSpacing + 40){
+                        box.setPaused(!box.isPaused());
                     }
                 }
                 if (selectedSlider == 0) {
