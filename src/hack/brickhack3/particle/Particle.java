@@ -155,7 +155,12 @@ public class Particle {
      */
     public void particleCollide(Particle that){
         //Check if actually colliding
-        if (Math.sqrt(Math.pow(this.x - that.x , 2) + Math.pow(this.y - that.y , 2)) > (2 * radius)) return;
+        if (Math.sqrt(Math.pow(this.x - that.x , 2) + Math.pow(this.y - that.y , 2)) > (2 * radius)) {
+            System.out.println("No collision...");
+            return;
+        }
+
+        System.out.println("COLLISION DETECTED!");
 
         double theta1 = Math.atan(this.velX / this.velY);
         double theta2 = Math.atan(that.velX / that.velY);
@@ -166,11 +171,11 @@ public class Particle {
         double phi = Math.atan((this.y - that.y) / (that.x - this.x));
         double pi = Math.PI;
 
-        this.velX = (v2 * Math.cos(theta2 - phi) * Math.cos(phi)) + (v1 * Math.sin(theta1 - pi) * Math.cos(phi + pi));
-        this.velY = (v2 * Math.cos(theta2 - phi) * Math.sin(phi)) + (v1 * Math.sin(theta1 - pi) * Math.sin(phi + pi));
+        this.velX = (v2 * Math.cos(theta2 - phi) * Math.cos(phi)) + (v1 * Math.sin(theta1 - pi) * Math.cos(phi + (pi/2)));
+        this.velY = (v2 * Math.cos(theta2 - phi) * Math.sin(phi)) + (v1 * Math.sin(theta1 - pi) * Math.sin(phi + (pi/2)));
 
-        that.velY = (v1 * Math.cos(theta1 - phi) * Math.sin(phi)) + (v2 * Math.sin(theta2 - pi) * Math.sin(phi + pi));
-        that.velX = (v1 * Math.cos(theta1 - phi) * Math.cos(phi)) + (v2 * Math.sin(theta2 - pi) * Math.cos(phi + pi));
+        that.velY = (v1 * Math.cos(theta1 - phi) * Math.sin(phi)) + (v2 * Math.sin(theta2 - pi) * Math.sin(phi + (pi/2)));
+        that.velX = (v1 * Math.cos(theta1 - phi) * Math.cos(phi)) + (v2 * Math.sin(theta2 - pi) * Math.cos(phi + (pi/2)));
     }
 
     public double getDeltaT() {
@@ -184,9 +189,6 @@ public class Particle {
     public void update() {
         this.updatePosition();
         this.wallCollisions();
-        // check for other collisions
-
-
     }
 
 }
