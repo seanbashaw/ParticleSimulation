@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Created by seanb on 2/11/2017.
+ *
  */
 public class Box {
 
@@ -46,29 +47,13 @@ public class Box {
     }
 
     public void update() {
-        /*
-        for(Particle p : this.particles){
-            p.setDeltaT(1.00/Gui.getFps());
-            p.update();
-        }
-         */
-        if (this.particles.length > 50) {
-            for (int i = 0; i < this.particles.length; i += 50) {
-                final int i_temp = i;
-                new Thread(() -> {
-                    for (int k = 0; k < 51; k += 1) {
-                        try {
-                            this.particles[k + i_temp].setDeltaT(1.00/Gui.getFps());
-                            this.particles[k + i_temp].update();
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            break;
-                        }
-                    }
-                }).start();
-            }
-        } else {
-            for (Particle p : this.particles) {
-                p.update();
+        for(Particle p : particles){
+            p.setDeltaT(1.0/Gui.getFps());
+            p.updatePosition();
+            p.wallCollisions();
+
+            for(Particle p2 : particles){
+                if(p != p2) p.particleCollide(p2);
             }
         }
     }
@@ -76,8 +61,7 @@ public class Box {
     /**
      *  Constants needed for speed and such
      */
-    private double T = 20093, M = 1, R = 8.3145;
-
+    private double T = 2093, M = 1, R = 8.3145;
 
     /**
      * This function describes the distributions of the speed
@@ -106,7 +90,7 @@ public class Box {
             while(j > 0 && i < N){
 
                 //create a particle with speed v
-                arr[i] = new Particle(0, 0, 4);
+                arr[i] = new Particle(0, 0, 20);
                 double dir = Math.random() * 2 * Math.PI;
                 arr[i].setVelocity(v, dir);
 
