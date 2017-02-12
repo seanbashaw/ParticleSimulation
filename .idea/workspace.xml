@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="Added collisions 2.0">
+    <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Box.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/startup/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +28,8 @@
             <file leaf-file-name="Particle.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="650">
-                    <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+                  <state relative-caret-position="136">
+                    <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
@@ -804,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486874691921</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="COLLISIONS WORK!">
+      <created>1486884448555</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1486884448555</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -877,7 +881,8 @@
     <MESSAGE value="Got rid of print" />
     <MESSAGE value="Added collisions" />
     <MESSAGE value="Added collisions 2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added collisions 2.0" />
+    <MESSAGE value="COLLISIONS WORK!" />
+    <option name="LAST_COMMIT_MESSAGE" value="COLLISIONS WORK!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1568,8 +1573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hack/brickhack3/particle/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#getRadius#0;class#Particle#0" expanded="false" />
