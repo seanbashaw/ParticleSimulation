@@ -497,8 +497,8 @@ public class Gui {
     }
     private boolean toggle = false;
     private static int fps = 60;
-    private float minimumVolume = 0;
-    private float maximumVolume = 4;
+    private float minimumVolume = 1;
+    private float maximumVolume = 10;
     private float volume = (maximumVolume + minimumVolume) / 2;
     private float minimumKelvin = 0;
     private float maximumKelvin = 1000;
