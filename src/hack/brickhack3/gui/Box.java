@@ -64,6 +64,8 @@ public class Box {
     }
 
     public void update() {
+        if (paused)
+            return;
         /*for(Particle p : particles){
             p.setDeltaT(.50/Gui.getFps());
             p.updatePosition();
