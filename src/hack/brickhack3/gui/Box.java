@@ -46,6 +46,12 @@ public class Box {
     }
 
     public void update() {
+        /*
+        for(Particle p : this.particles){
+            p.setDeltaT(1.00/Gui.getFps());
+            p.update();
+        }
+         */
         if (this.particles.length > 50) {
             for (int i = 0; i < this.particles.length; i += 50) {
                 final int i_temp = i;
