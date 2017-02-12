@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b47f1859-e887-40b3-9ef2-0024a8a39506" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java" afterPath="$PROJECT_DIR$/src/hack/brickhack3/gui/Gui.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -791,7 +790,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486899032501</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added FULLSCREEN">
+      <created>1486900143485</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1486900143485</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -864,7 +870,8 @@
     <MESSAGE value="Got rid of print" />
     <MESSAGE value="Added a pause thing to box" />
     <MESSAGE value="Added paused GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added paused GUI" />
+    <MESSAGE value="Added FULLSCREEN" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added FULLSCREEN" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
