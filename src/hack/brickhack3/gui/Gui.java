@@ -1,5 +1,6 @@
 package hack.brickhack3.gui;
 
+import hack.brickhack3.particle.Particle;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -499,9 +500,9 @@ public class Gui {
     private boolean toggle = false;
     private static int fps = 60;
     private float minimumVolume = 1;
-    private float maximumVolume = 10;
+    private float maximumVolume = 100;
     private float volume = (maximumVolume + minimumVolume) / 2;
-    private float minimumKelvin = 0;
+    private float minimumKelvin = 0.1f;
     private float maximumKelvin = 1000;
     private float selectedSlider = -1;
     private int selectedElement = 0;
@@ -513,7 +514,24 @@ public class Gui {
         NITROGEN,
         NEON
     };
-
+    public float setM(Element e) {
+        if (e == Element.HELIUM){
+            return 0.004002602f;
+        }
+        if (e == Element.HYDROGEN){
+            return 0.00100794f;
+        }
+        if (e == Element.NEON){
+            return 0.0201797f;
+        }
+        if (e == Element.NITROGEN){
+            return 0.0140067f;
+        }
+        if (e == Element.OXYGEN){
+            return 0.0159994f;
+        }
+        return 0;
+    }
     private float kelvin = (maximumKelvin + minimumKelvin) / 2;
     private void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
@@ -626,6 +644,9 @@ public class Gui {
                     else if (Keyboard.getEventKey() == Keyboard.KEY_V) {
                         vsync = !vsync;
                         Display.setVSyncEnabled(vsync);
+                    }else if (Keyboard.getEventKey() == Keyboard.KEY_SPACE){
+                        box = new Box((int)Math.pow(volume/3,2),kelvin,setM(element));
+                        Particle.setRadius((int)(200/volume));
                     }
                 }
             }

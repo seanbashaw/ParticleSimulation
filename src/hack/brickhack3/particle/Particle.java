@@ -14,7 +14,11 @@ public class Particle {
     private double velX = 0;
     private double velY = 0;
 
-    private final int radius;
+    public static void setRadius(int ra) {
+        radius = ra;
+    }
+
+    private static int radius;
 
     private double deltaT;
 

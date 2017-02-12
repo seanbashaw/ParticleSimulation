@@ -10,7 +10,6 @@ import java.util.ArrayList;
  *
  */
 public class Box {
-
     private Particle[] particles;
 
     public boolean isPaused() {
@@ -30,7 +29,13 @@ public class Box {
     public Box(Particle[] particles){
         this.particles = particles;
     }
-
+    public Box(int num_particles, float t, float m){
+        this.T = t;
+        this.M = m;
+        this.particles = this.createParticles(num_particles);
+        this.distributeParticles(this.particles);
+        this.quad = new QuadTree(0,new Rectangle(0,0,1080,1080));
+    }
     public Box(int num_particles) {
         this.particles = this.createParticles(num_particles);
         this.distributeParticles(this.particles);
@@ -114,6 +119,35 @@ public class Box {
         this.quad.clear();
         // this section is called once
     }
+    private enum Element {
+        HYDROGEN,
+        HELIUM,
+        OXYGEN,
+        NITROGEN,
+        NEON
+    }
+    public void setTemperature(double t) {
+        T = t;
+    }
+
+    public void setM(Element e) {
+        if (e == Element.HELIUM){
+         M = 0.004002602;
+        }
+        if (e == Element.HYDROGEN){
+            M = 0.00100794;
+        }
+        if (e == Element.NEON){
+M = 0.0201797;
+        }
+        if (e == Element.NITROGEN){
+M = 0.0140067;
+        }
+        if (e == Element.OXYGEN){
+M = 0.0159994;
+        }
+    }
+
 
     /**
      *  Constants needed for speed and such
