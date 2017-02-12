@@ -513,6 +513,16 @@ public class Gui {
     private float kelvinmin = 0;
     private float kelvinmax = 1000;
     private float guinum = -1;
+    private float minimumtime = 0;
+    private float maximumtime = 10;
+    private Element element;
+    private enum Element{
+        HYDROGEN,
+        HELIUM,
+        OXYGEN,
+        NITROGEN,
+        NEON
+    };
     public float kelvin = (kelvinmax + kelvinmin) / 2;
     public void drawBox(float x, float y, float width, float height){
         GL11.glBegin(GL11.GL_QUADS);
