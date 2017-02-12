@@ -16,7 +16,11 @@ public class QuadTree {
     private Rectangle bounds;
     private QuadTree[] nodes;
 
-
+    /**
+     * Constructor of QuadTree
+     * @param level - level of tree
+     * @param bounds -  bounds of rectangles
+     */
     public QuadTree(int level, Rectangle bounds) {
         this.level = level;
         this.objects = new ArrayList<Particle>();
@@ -38,6 +42,10 @@ public class QuadTree {
         }
     }
 
+    /**
+     *The split method splits the node into four subnodes by dividing the node into four equal parts and initializing
+     * the four subnodes with the new bounds.
+     */
     private void split() {
         int subWidth = this.bounds.getWidth() / 2;
         int subHeight = this.bounds.getHeight() /2;
@@ -52,6 +60,12 @@ public class QuadTree {
 
     }
 
+
+    /**
+     * determines where an object belongs in the quadtree by determining which node the object can fit into.
+     * @param particle - Gets the position index of the particle
+     * @return - index/position of the particle. -1 is not fitting.
+     */
     private int getIndex(Particle particle) {
         int index = -1;
         double verticalMidpoint = this.bounds.getX() + (this.bounds.getWidth() / 2);
@@ -77,6 +91,12 @@ public class QuadTree {
         return index;
     }
 
+    /**
+     * The method first determines whether the node has any child nodes and tries to add the object there.
+     * If there are no child nodes or the object doesn’t fit in a child node,
+     * it adds the object to the parent node.
+     * @param particle - particle that needs to be inserted in tree
+     */
 
     public void insert(Particle particle) {
         if (this.nodes[0] != null) {
@@ -100,6 +120,14 @@ public class QuadTree {
             }
         }
     }
+
+    /**
+     * The method first determines whether the node has any child nodes and tries to add the object there.
+     * If there are no child nodes or the object doesn’t fit in a child node, it adds the object to the parent node.
+     * @param returnObjects - the objects that can collide with particle
+     * @param particle - the particle that is we want to check collision with.
+     * @return - list of object particles
+     */
 
     public ArrayList retrieve(ArrayList<Particle> returnObjects, Particle particle){
         int index = getIndex(particle);
