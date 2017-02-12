@@ -548,7 +548,7 @@ public class Gui {
         try {
             Display.setDisplayMode(new DisplayMode(Box.getWidth() + interfaceWidth, Box.getHeight()));
             Display.setFullscreen(true);
-            Display.setTitle("Particle Simulator - BrickHacks 3");
+            Display.setTitle("Gas Particle Simulator - BrickHacks 3");
             Display.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
@@ -576,10 +576,8 @@ public class Gui {
             for (int i = 0; i < 3; i++) {
                 drawBox(barStartPosition + (sliderLength / 2), verticalSpacing + verticalSpacing * i, sliderLength, 5);
             }
-            type(""+ minimumVolume, (int)(barStartPosition)-10,(int)volumeVerticalPosition-20);
-            type(""+ maximumVolume, (int)(barStartPosition+ sliderLength -10),(int)volumeVerticalPosition-20);
-            type(Float.toString(volume).substring(0,3),(int)volumeSliderPosition-10,(int)volumeVerticalPosition-20);
-            type("Volume",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
+            type(""+(int)Math.pow(2,volume/10),(int)volumeSliderPosition-10,(int)volumeVerticalPosition-20);
+            type("Particles",(int)(barStartPosition+ sliderLength /2-25),(int)(volumeVerticalPosition-40));
             type(element.name(),(int)(barStartPosition+ sliderLength /2)-25,(int)(elementVerticalPosition-40));
             GL11.glColor3f(1f, 1f, 1f);
             drawBox(volumeSliderPosition,volumeVerticalPosition,10,20);
