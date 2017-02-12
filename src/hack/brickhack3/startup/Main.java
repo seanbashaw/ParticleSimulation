@@ -1,6 +1,7 @@
 package hack.brickhack3.startup;
 
 import hack.brickhack3.gui.Box;
+import hack.brickhack3.gui.Gui;
 import hack.brickhack3.particle.Particle;
 
 /**
@@ -82,10 +83,10 @@ public class Main {
 
     public static void main(String[] args){
         Box box = new Box(createParticles(100));
-
         distributeParticles(box.particles);
+        Gui gui = new Gui(box);
 
-        box.start();
+        gui.start();
 
         //move to thread?
 

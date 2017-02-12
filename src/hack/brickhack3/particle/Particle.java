@@ -1,6 +1,6 @@
 package hack.brickhack3.particle;
 
-import hack.brickhack3.gui.Box;
+import hack.brickhack3.gui.Gui;
 
 /**
  * Created by Connor on 2/11/2017.
@@ -133,9 +133,9 @@ public class Particle implements Runnable {
             x = radius;
         }
         //Right wall
-        else if((x + radius) >= Box.getWidth()){
+        else if((x + radius) >= Gui.getWidth()){
             velX = -velX;
-            x = Box.getWidth() - radius;
+            x = Gui.getWidth() - radius;
         }
         //Upper wall
         else if((y - radius) <= 0){
@@ -143,9 +143,9 @@ public class Particle implements Runnable {
             y = radius;
         }
         //Bottom wall
-        else if((y + radius) >= Box.getHeight()){
+        else if((y + radius) >= Gui.getHeight()){
             velY = -velY;
-            y = Box.getHeight() - radius;
+            y = Gui.getHeight() - radius;
         }
     }
 
