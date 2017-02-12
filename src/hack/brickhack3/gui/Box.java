@@ -49,7 +49,6 @@ public class Box {
         if (this.particles.length > 50) {
             for (int i = 0; i < this.particles.length; i += 50) {
                 final int i_temp = i;
-                System.out.println(i_temp);
                 new Thread(() -> {
                     for (int k = 0; k < 51; k += 1) {
                         try {

@@ -573,7 +573,6 @@ public class Gui {
             if (Mouse.isButtonDown(0)) {
                 int x = Mouse.getX();
                 int y = (Box.getHeight()-Mouse.getY());
-                System.out.println((x-volumeSliderPosition)+" "+(y-volumeVerticalPosition));
                 if (x >= Box.getWidth() && x < Box.getWidth() + interfaceWidth && y > 0 && y < Box.getHeight()) {
                     if (x > (volumeSliderPosition - 5) && x < (volumeSliderPosition + 5) && y > (volumeVerticalPosition - 10) && y < (volumeVerticalPosition + 10)) {
                         if (selectedSlider == -1) {
