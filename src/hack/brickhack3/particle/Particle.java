@@ -149,6 +149,27 @@ public class Particle {
         }
     }
 
+    /**
+     * Calculate the new velocity and
+     * @param that
+     */
+    public void particleCollide(Particle that){
+        double theta1 = Math.atan(this.velX / this.velY);
+        double theta2 = Math.atan(that.velX / that.velY);
+
+        double v1 = Math.sqrt(Math.pow(this.velX,2) + Math.pow(this.velY, 2));
+        double v2 = Math.sqrt(Math.pow(that.velX,2) + Math.pow(that.velY, 2));
+
+        double phi = Math.atan((this.y - that.y) / (that.x - this.x));
+        double pi = Math.PI;
+
+        this.velX = (v2 * Math.cos(theta2 - phi) * Math.cos(phi)) + (v1 * Math.sin(theta1 - pi) * Math.cos(phi + pi));
+        this.velY = (v2 * Math.cos(theta2 - phi) * Math.sin(phi)) + (v1 * Math.sin(theta1 - pi) * Math.sin(phi + pi));
+
+        that.velY = (v1 * Math.cos(theta1 - phi) * Math.sin(phi)) + (v2 * Math.sin(theta2 - pi) * Math.sin(phi + pi));
+        that.velX = (v1 * Math.cos(theta1 - phi) * Math.cos(phi)) + (v2 * Math.sin(theta2 - pi) * Math.cos(phi + pi));
+    }
+
     public double getDeltaT() {
         return deltaT;
     }
