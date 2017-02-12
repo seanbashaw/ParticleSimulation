@@ -2,9 +2,6 @@ package hack.brickhack3.particle;
 
 import hack.brickhack3.gui.Gui;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.tests.SoundTest;
-
-import java.util.Vector;
 
 /**
  * Created by Connor on 2/11/2017.

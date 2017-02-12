@@ -47,7 +47,7 @@ public class Box {
     }
 
     public void update() {
-        for(Particle p : particles){
+        /*for(Particle p : particles){
             p.setDeltaT(.50/Gui.getFps());
             p.updatePosition();
             p.wallCollisions();
@@ -62,7 +62,32 @@ public class Box {
                 }
                 i += 1;
             }
+        }*/
+
+        if (this.particles.length > 50) {
+            for (int i = 0; i < this.particles.length; i += 50) {
+                final int i_temp = i;
+                new Thread(() -> {
+                    for (int k = 0; k < 51; k += 1) {
+
+                        // this section is called on every particle
+
+                        try {
+                            this.particles[k + i_temp].setDeltaT(1.00/Gui.getFps());
+                            this.particles[k + i_temp].update();
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+                }).start();
+            }
+        } else {
+            for (Particle p : this.particles) {
+                p.update();
+            }
         }
+
+        // this section is called once
     }
 
     /**
